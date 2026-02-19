@@ -4,6 +4,7 @@
 #include <Adafruit_BNO08x.h>
 #include <Arduino.h>
 #include <Ticker.h>
+#include <PID_v1.h>
 /// ######################################################################################
 /// Variable
 /// ######################################################################################
@@ -25,52 +26,59 @@
 #define BNO08X_INT 4 // 17 -> 4
 #define BNO08X_RST -1
 #define BNO08X_ADDR 0x4B
-
+#define SERVO 23
+#define HALL_SENSOR 5
+#define IR_SENSOR 34
 /// ##############################################
+
+
 
 hw_timer_t *timer1 = NULL;
 Adafruit_BNO08x bno085 = Adafruit_BNO08x();
 unsigned long lastTimeStamp = 0;
 int analog_ly = 0;
 int analog_rx = 0;
-volatile float PWM_left;
-volatile float PWM_right;
+volatile float PWM_left; // Command PWM left
+volatile float PWM_right; // Command PWM right
 float analog_left;
 float analog_right;
-float angular_velocity;
-float linear_velocity;
-float left_wheel_velocity; // Left wheel velocity (m/s)
-float right_wheel_velocity; // Right wheel velocity (m/s)
-volatile float current_PWM_left = 0;
-volatile float current_PWM_right = 0;
-volatile float step_size;
+float angular_velocity; // Command angular velocity
+float linear_velocity; // Command linear velocity
+float left_wheel_velocity; // Left wheel command velocity (m/s)
+float right_wheel_velocity; // Right wheel command velocity (m/s)
 float timer1_interval = 10; // Timer for accelerate ramping (ms)
-volatile bool ramping_tick = false; // To tick ramping function
+volatile bool timer_tick = false; // To tick ramping function
+volatile bool serial_handle = false;
+const double IMU_noise = 0.03;
+
+
+/// ##############################################
+/// Robot Spec
+const float wheel_distance = 0.475; //Distance between wheels in m
+const float wheel_diameter = 0.2032; //Wheel diameter in m
+const float WHEEL_RADIUS = wheel_diameter/2;
+const float GEAR_RATIO = 51.0; // Motor to wheel gear ratio
+const int motor_RPM = 6000; // Motor RPM
+const float ENCODE_PPR = 600.0;
+const float MOTOR2ENCODE_RATIO = 1; //70.0/40.0; // Gear ratio from moter to encoder
+const float WHEEL_CIRCUMFERENCE = PI * wheel_diameter; // 2*PI*R
+/// ##############################################
+
 
 /// ##############################################
 /// Physical Variables
-float distance = 0.0; // Distance traveled (m)
-float rpm_left = 0.0; // Left wheel RPM
-float rpm_right = 0.0; // Right wheel RPM
-float velocity_mps_left = 0.0; // Left wheel velocity (m/s)
-float velocity_mps_right = 0.0; // Right wheel velocity (m/s)
+float distance = 0.0; // Reality distance traveled (m)
+float RPM_LEFT = 0.0; // Reality left wheel RPM
+float RPM_RIGHT = 0.0; // Reality right wheel RPM
+float velocity_mps_left = 0.0; // Reality left wheel velocity (m/s)
+float velocity_mps_right = 0.0; // Reality right wheel velocity (m/s)
 /// ##############################################
 
-/// ##############################################
-/// Virtual Variables'
-float x_pos = 0.0;
-float y_pos = 0.0;
-/// ##############################################
 
 /// ##############################################
 /// Differential Drive Variables
-const float wheel_distance = 0.475; //Distance between wheels in m
-const float max_speed = 0.5; //Max linear speed in m/s
-const float max_angular_speed = 45.0; //Max angular speed in deg/s
-const float wheel_diameter = 0.2; //Wheel diameter in m
-const float gear_ratio = 70.0; // Motor to wheel gear ratio
-const int motor_RPM = 6000; // Motor RPM
-const float accelerate_time = 3.0; // Time to reach speed in seconds
+const float max_speed = 0.3; //Max linear speed in m/s
+const float max_angular_speed = 30.0; //Max angular speed in deg/s
 /// ##############################################
 
 
@@ -79,29 +87,35 @@ const float accelerate_time = 3.0; // Time to reach speed in seconds
 static int lastPos_left = 0;
 static int lastPos_right = 0;
 unsigned long previousMillis = 0;
-const long encoder_interval = 100; // calculate every 100 ms
+const long encoder_interval = 20; // calculate every 20 ms
 long oldPos_left = 0;
 long oldPos_right = 0;
-const float MOTOR_PPR = 600.0;
-const float ENCODER_MULTIPILIER = 2.0; // Use FOUR3 latch mode
-const float GEAR_RATIO = 70.0/40.0; // Gear ratio from moter to encoder
-const float COUNTS_PER_REVOLUTION = MOTOR_PPR * GEAR_RATIO * ENCODER_MULTIPILIER;
-const float WHEEL_CIRCUMFERENCE = PI * wheel_diameter;
+const float ENCODER_MULTIPILIER = 2.0; // Use TWO03 latch mode
+float velocity_mps_left_filtered = 0.0;
+float velocity_mps_right_filtered = 0.0;
+const float filter_alpha = 0.05; // Lower is smoother (0.05 - 0.2 is typical)
+unsigned long last_encoder_time = 0;
+const float COUNTS_PER_REVOLUTION = 1600; //ENCODE_PPR * MOTOR2ENCODE_RATIO * ENCODER_MULTIPILIER;
+long currentPos_left = 0;
+long currentPos_right = 0;
 /// ###############################################
+
 
 /// ###############################################
 /// IMU Variables
 /// Quaternion
-float imu_r;
-float imu_i;
-float imu_j;
-float imu_k;
+float imu_r; 
+float imu_i; 
+float imu_j; 
+float imu_k; 
 
-float gyro_z = 0;
+float yaw = 0;
+
 uint32_t last_imu_time = 0;
-
+double angular_vel_z = 0.0; // IMU angular velocity
 float angular_accel_z;
 /// ###############################################
+
 
 /// ###########################################
 /// Encode Setup 
@@ -114,13 +128,64 @@ IRAM_ATTR void checkPositon() {
 }
 /// ############################################
 
+
 /// ############################################
 /// UART Setup
 Ticker uartTimer;
-const int ARRAY_SIZE = 4;
+Ticker controlTimer;
+Ticker SerialTimer;
+const int ARRAY_SIZE = 2;
 float incomingData[ARRAY_SIZE];
-volatile float outgoingData[8] = {0,0,0,0,0,0,0,0};
+volatile float outgoingData[13] = {0};
 /// ############################################
+
+
+/// ############################################
+/// PID Variable
+double PIDsetpoint; // Desire value for PID left
+double PIDinput; // Reality current value for PID left
+double PIDoutput; // Output value for PID left
+/// PID Setup
+double Kp=200, Ki=5, Kd=1;
+unsigned long straightStartTime = 0;
+const float FADE_DURATION = 500.0; // Half a second fade-in
+
+PID ControlPID(&PIDinput, &PIDoutput, &PIDsetpoint, Kp, Ki, Kd, DIRECT);
+/// ############################################
+
+
+/// ##################################
+///Wheel profile variables
+double startWheelL = 0, targetWheelL = 0, currentProfiledWheelL = 0; // Output velocity from S-Curve
+double startWheelR = 0, targetWheelR = 0, currentProfiledWheelR = 0; // Output velocity from S-Curve
+unsigned long moveStartTime = 0;
+const double RAMP_DURATION = 0.5 * 1000.0; // Duration of accelerate from initial to desire value
+/// ##################################
+
+/// ##############################################
+/// Global State for Change Detection
+float last_joystick_linear = 0.0;
+float last_joystick_angular = 0.0;
+const float JOYSTICK_THRESHOLD = 0.02; // 2% change triggers new ramp
+/// ##############################################
+
+/// ##############################################
+/// Command Variable
+float command_angular_speed = 0; // Command Angular speed rad/s
+float L_PWM_out = 0;
+float R_PWM_out = 0;
+/// ##############################################
+
+/// ##############################################
+/// Robot State
+bool rotating;
+/// ##############################################
+
+
+/// ##############################################
+/// Safety Variable
+const int SAFETY_PWM = 177; // To prevent PWM from exceed
+/// ##############################################
 
 
 /// ######################################################################################
@@ -204,30 +269,28 @@ float rad2deg(float rad){
   return (rad * (180/PI));
 }
 
+double velocity2RPM(double linear_vel){
+  return (linear_vel / (2.0 * PI * WHEEL_RADIUS)) * 60.0 * GEAR_RATIO;
+}
+
+double RPM2velocity(double RPM){
+  return ((2.0 * PI * WHEEL_RADIUS) * RPM) / (GEAR_RATIO * 60.0);
+}
+
 int speed2pwm(float speed){
   /*
     Function to convert desired speed (m/s) to PWM value (0-255).
-  */
-  float wheel_circumference = PI * wheel_diameter;
+  */ 
+  float wheel_circumference = PI * wheel_diameter; 
   float RPS = speed / wheel_circumference;
   float RPM = RPS * 60;
-  float motor_speed = RPM * gear_ratio;
+  float motor_speed = RPM * GEAR_RATIO;
   float duty_cycle = motor_speed / motor_RPM;
   float PWM = duty_cycle * 255.0;
   if (PWM > 255){
     PWM = 255;
   }
   return PWM;
-}
-
-float step_size_calculate(float accelerate_time){
-  /*
-    Function to calculate step size for PWM ramping based on desired accelerate time.
-  */
-  float Total_step = (accelerate_time * 1000) / timer1_interval;
-  float step_size = 255 / Total_step;
-  step_size = max(1.0f, step_size);
-  return step_size;
 }
 
 void pwm_command(int pwml1, int pwml2, int pwmr1, int pwmr2){
@@ -253,54 +316,15 @@ void diffdrive_equation(float v, float w, float L, float &vl, float &vr){
   vl = v - ((w * L) / 2);
 }
 
-void PWM_ramping(){
-  /*
-    Function to ramp PWM values for smooth acceleration/deceleration.
-  */
-  float delta_L = abs(PWM_left - current_PWM_left);
-  float delta_R = abs(PWM_right - current_PWM_right);
-  float step_size_L;
-  float step_size_R;
-
-  if (delta_L > delta_R){
-    step_size_L = step_size;
-    step_size_R = step_size * (delta_R / delta_L);
-  }
-  else if (delta_R > delta_L){
-    step_size_R = step_size;
-    step_size_L = step_size * (delta_L / delta_R);
-  }
-  else{
-    step_size_L = step_size;
-    step_size_R = step_size;
-  }
-
-  // Left Wheel Ramping
-  if (current_PWM_left < PWM_left){
-    current_PWM_left += step_size_L;
-    if (current_PWM_left > PWM_left) current_PWM_left = PWM_left;
-  }
-  else if (current_PWM_left > PWM_left){
-    current_PWM_left -= step_size_L;
-    if (current_PWM_left < PWM_left) current_PWM_left = PWM_left;
-  }
-
-  // Right Wheel Ramping
-  if (current_PWM_right < PWM_right){
-    current_PWM_right += step_size_R;
-    if (current_PWM_right > PWM_right) current_PWM_right = PWM_right;
-  }
-  else if (current_PWM_right > PWM_right){
-    current_PWM_right -= step_size_R;
-    if (current_PWM_right < PWM_right) current_PWM_right = PWM_right;
-  }
-}
-
 void IRAM_ATTR onTimer(){
   /*
-    Timer interrupt to tick ramping function.
+    Timer interrupt to tick function.
   */
-  ramping_tick = true;
+  timer_tick = true;
+}
+
+void SerialTick() {
+  serial_handle = true;
 }
 
 void control(int PWM_l, int PWM_r, int debug_mode){
@@ -406,109 +430,119 @@ void control(int PWM_l, int PWM_r, int debug_mode){
   }
 }
 
-void encoder_read(int pos_left, int pos_right){
+void encoder_calculate() {
   /*
-    Function to read encoder positions
-  */
-  int newPos_left = encoder_left->getPosition();
-  int newPos_right = encoder_right->getPosition();
-  if ((pos_left != newPos_left) || (pos_right != newPos_right)) {
-    Serial.print("pos_left:");
-    Serial.print(newPos_left);
-    Serial.print(" dir_left:");
-    Serial.print((int)(encoder_left->getDirection()));
-    Serial.print(" | pos_right:");
-    Serial.print(newPos_right);
-    Serial.print(" dir_right:");
-    Serial.println((int)(encoder_right->getDirection()));
-    pos_left = newPos_left;
-    pos_right = newPos_right;
-  }
-}
-
-void encoder_calculate(){
-  /*
-    Function to calculate encoder-based metrics
+    Function to calculate value from encoder to use in PID
   */
   unsigned long currentMillis = millis();
+  
   if (currentMillis - previousMillis >= encoder_interval) {
+    float dt = (currentMillis - previousMillis) / 1000.0;
     previousMillis = currentMillis;
 
-    /// Get encoder tick position.
-    long currentPos_left = encoder_left->getPosition();
-    long currentPos_right = encoder_right->getPosition();
-
-    /// Find delta tick positin.
-    long deltaPos_left = currentPos_left - oldPos_left;
-    long deltaPos_right = currentPos_right - oldPos_right;
-
-    /// Calculate RPS.
-    float revolution_left = (float)currentPos_left / COUNTS_PER_REVOLUTION;
-    float revolution_right = (float)currentPos_right / COUNTS_PER_REVOLUTION;
-
-    /// Calculate Distance (m) that wheels have traveled.
-    float distance_left = revolution_left * WHEEL_CIRCUMFERENCE;
-    float distance_right = revolution_right * WHEEL_CIRCUMFERENCE;
-
-    /// Calculate average distance (m) to get robot distance traveled.
-    distance = (distance_left + distance_right) / 2.0;
+    currentPos_left = encoder_left->getPosition();
+    currentPos_right = encoder_right->getPosition();
     
-    /// Calculate velocity in ticks per second.
-    float velocity_tps_left = deltaPos_left * (1000.0 / encoder_interval); // convert to counts per second
-    float velocity_tps_right = deltaPos_right * (1000.0 / encoder_interval);
+    // 1. Calculate Delta Distance (m) directly
+    // (Delta Ticks / Ticks per Rev) * Circumference
+    float delta_dist_L = ((float)(currentPos_left - oldPos_left) / COUNTS_PER_REVOLUTION) * WHEEL_CIRCUMFERENCE;
+    float delta_dist_R = ((float)(currentPos_right - oldPos_right) / COUNTS_PER_REVOLUTION) * WHEEL_CIRCUMFERENCE;
 
-    /// Calculate RPM by converting ticks per second.
-    rpm_left = (velocity_tps_left / COUNTS_PER_REVOLUTION) * 60.0;
-    rpm_right = (velocity_tps_right / COUNTS_PER_REVOLUTION) * 60.0;
+    // 2. Raw Velocity = Distance / Time
+    float raw_vel_L = delta_dist_L / dt;
+    float raw_vel_R = delta_dist_R / dt;
 
-    /// Calculate linear velocity (m/s) by converting ticks per second.
-    velocity_mps_left = (velocity_tps_left / COUNTS_PER_REVOLUTION) * WHEEL_CIRCUMFERENCE;
-    velocity_mps_right = (velocity_tps_right / COUNTS_PER_REVOLUTION) * WHEEL_CIRCUMFERENCE;
 
-    /// Set old position for next calculation.
+    // velocity_mps_left = raw_vel_L;
+    // velocity_mps_right = raw_vel_R;
+
+    // 3. Apply Filter
+    velocity_mps_left = (filter_alpha * raw_vel_L) + ((1.0 - filter_alpha) * velocity_mps_left);
+    velocity_mps_right = (filter_alpha * raw_vel_R) + ((1.0 - filter_alpha) * velocity_mps_right);
+
+    // Update variables for Odom/Debug
+    RPM_LEFT = (raw_vel_L / WHEEL_CIRCUMFERENCE) * 60.0;
+    RPM_RIGHT = (raw_vel_R / WHEEL_CIRCUMFERENCE) * 60.0;
+
+
+    // Calculate distance
+    distance = ((float)currentPos_left + (float)currentPos_right) / (2.0 * COUNTS_PER_REVOLUTION) * WHEEL_CIRCUMFERENCE;
+
     oldPos_left = currentPos_left;
     oldPos_right = currentPos_right;
   }
+}
+
+double SCurve(double t, double start, double delta_vel, double duration){
+  /*
+    Functuin to calculate S-Curve.
+  */
+  if (t >= duration) return start + delta_vel;
+  t /= duration / 2;
+  if (t < 1) return delta_vel / 2 * t * t * t + start;
+  t -= 2;
+  return delta_vel / 2 * (t * t * t + 2) + start;
 }
 
 void IMU_Quaternion(){
   sh2_SensorValue_t sensorValue;
   if (bno085.getSensorEvent(&sensorValue)) {
     if (sensorValue.sensorId == SH2_GAME_ROTATION_VECTOR) {
-      imu_r = sensorValue.un.gameRotationVector.real;
-      imu_i = sensorValue.un.gameRotationVector.i;
-      imu_j = sensorValue.un.gameRotationVector.j;
-      imu_k = sensorValue.un.gameRotationVector.k;
+      imu_i = sensorValue.un.gameRotationVector.i; // x
+      imu_j = sensorValue.un.gameRotationVector.j; // y
+      imu_k = sensorValue.un.gameRotationVector.k; // z
+      imu_r = sensorValue.un.gameRotationVector.real; // w
 
-      // Serial.print("Quaternion: ");
-      // Serial.print(r);
-      // Serial.print(", ");
-      // Serial.print(i);
-      // Serial.print(", ");
-      // Serial.print(j);
-      // Serial.print(", ");
-      // Serial.println(k);
-      // Process quaternion data (quat[0], quat[1], quat[2], quat[3])
+      yaw = atan2(2.0 * (imu_r * imu_k + imu_i * imu_j), 1.0 - 2.0 * (imu_j * imu_j + imu_k * imu_k));
+    }
+  }
+}
+
+void IMU_Angular(){
+  sh2_SensorValue_t Angular_Value;
+  if (bno085.getSensorEvent(&Angular_Value)){
+    if (Angular_Value.sensorId == SH2_GYROSCOPE_CALIBRATED) {
+      angular_vel_z = Angular_Value.un.gyroscope.z;
+
+      // Serial.print("Angular Velocity :");
+      // Serial.print(angular_velocity);
+      // Serial.print(" | ");
+      // Serial.println(angular_vel_z);
     }
   }
 }
 
 void UART_send_data(){
-  outgoingData[0] = velocity_mps_left;
-  outgoingData[1] = velocity_mps_right;
-  outgoingData[2] = imu_i;
-  outgoingData[3] = imu_j;
-  outgoingData[4] = imu_k;
-  outgoingData[5] = imu_r;
-  outgoingData[6] = angular_accel_z;
+  outgoingData[0] = (float)millis();
+  outgoingData[1] = currentPos_left;
+  outgoingData[2] = currentPos_right;
+  outgoingData[3] = yaw;
+  outgoingData[4] = 0;
+  outgoingData[5] = 0;
+  outgoingData[6] = 0;
+  outgoingData[7] = angular_accel_z;
+  outgoingData[8] = PIDsetpoint;
+  outgoingData[9] = PIDinput;
+  outgoingData[10] = PIDoutput;
+  outgoingData[11] = L_PWM_out;
+  outgoingData[12] = R_PWM_out;
+
+  uint8_t header = 0xAA;
+  Serial2.write(header);
+
   Serial2.write((uint8_t*)outgoingData, sizeof(outgoingData));
 }
 
 void encoder_debug(){
-  Serial.print("RPM l/r : ");
-  Serial.print(rpm_left);
+
+  Serial.print("Output PWM : ");
+  Serial.print(PWM_left);
   Serial.print(" | ");
-  Serial.print(rpm_right);
+  Serial.print(PWM_right);
+  Serial.print("  RPM l/r : ");
+  Serial.print(RPM_LEFT);
+  Serial.print(" | ");
+  Serial.print(RPM_RIGHT);
   Serial.print(" - Velocity l/r (m/s) : ");
   Serial.print(velocity_mps_left);
   Serial.print(" | ");
@@ -549,6 +583,100 @@ void PWM_debug(){
   Serial.println(PWM_right);
 }
 
+void PID_debug(){
+  Serial.print("Setpoint :");
+  Serial.print(PIDsetpoint);
+  Serial.print(" | Feedback:");
+  Serial.print(PIDinput);
+  Serial.print(" | error:");
+  Serial.print(PIDsetpoint-PIDinput);
+  Serial.print(" | PIDoutput :");
+  Serial.print(PIDoutput);
+  Serial.print(" | PWM_L_out :");
+  Serial.print(L_PWM_out);
+  Serial.print(" | PWM_R_out :");
+  Serial.println(R_PWM_out);
+}
+
+void updateControl(){
+  /// S-Curve calculate
+  unsigned long elapsed = millis() - moveStartTime;
+  currentProfiledWheelL = SCurve((double)elapsed, startWheelL, targetWheelL - startWheelL, RAMP_DURATION);
+  currentProfiledWheelR = SCurve((double)elapsed, startWheelR, targetWheelR - startWheelR, RAMP_DURATION);
+
+  PWM_left = speed2pwm(currentProfiledWheelL);
+  PWM_right = speed2pwm(currentProfiledWheelR);
+
+  if (PWM_right > SAFETY_PWM){
+    PWM_right = SAFETY_PWM;
+  }
+  
+  if (PWM_left > SAFETY_PWM){
+    PWM_left = SAFETY_PWM;
+  }
+
+  if (PWM_right < -SAFETY_PWM){
+    PWM_right = -SAFETY_PWM;
+  }
+
+  if (PWM_left < -SAFETY_PWM){
+    PWM_left = -SAFETY_PWM;
+  }
+  encoder_calculate();
+
+  bool isMoving = (abs(targetWheelL) > 0.01 || abs(targetWheelR) > 0.01);
+  
+  if (rotating == false){
+    if (ControlPID.GetMode() == MANUAL){
+      PIDoutput = 0;
+      ControlPID.SetMode(AUTOMATIC);
+      straightStartTime = millis(); // Mark the moment we started going straight
+    }
+
+    PIDsetpoint = 0;
+    PIDinput =  velocity_mps_right - velocity_mps_left;
+
+
+    if (isMoving){
+      ControlPID.Compute();
+
+      /// PID Fade-in logic
+      float timeSinceStraight = millis() - straightStartTime;
+      float pidScalar = timeSinceStraight / FADE_DURATION;
+
+      if (pidScalar > 1.0) pidScalar = 1.0;
+      if (pidScalar < 0) pidScalar = 0;
+
+      L_PWM_out = PWM_left - (PIDoutput * pidScalar);
+      R_PWM_out = PWM_right + (PIDoutput * pidScalar);
+    } else{
+      PIDoutput = 0;
+      L_PWM_out = PWM_left;
+      R_PWM_out = PWM_right;
+    }    
+
+  } else if (rotating == true){
+    ControlPID.SetMode(MANUAL);
+    PIDoutput = 0;
+    L_PWM_out = PWM_left;
+    R_PWM_out = PWM_right;
+  }
+  
+
+  // if (abs(command_angular_speed - angular_vel_z) < IMU_noise){
+  //   PIDinput = command_angular_speed;
+  // } else{
+  //   PIDinput = angular_vel_z;
+  // }
+  
+  
+
+  
+  control((int)round(L_PWM_out),(int)round(R_PWM_out), 0);
+  // control((int)round(PWM_left),(int)round(PWM_right), 0); // Main control function.
+}
+
+
 /// ######################################################################################
 /// Main
 /// ######################################################################################
@@ -556,12 +684,18 @@ void setup()
 {
   Serial.begin(115200); /// Set Serial Baud rate.
   Serial2.begin(115200, SERIAL_8N1, RXD2, TXD2);
-  step_size = step_size_calculate(accelerate_time);
 
   pinMode(PWML_F,OUTPUT);
   pinMode(PWML_B,OUTPUT);
   pinMode(PWMR_F,OUTPUT);
   pinMode(PWMR_B,OUTPUT);
+
+  pinMode(SERVO, OUTPUT);
+  pinMode(HALL_SENSOR, INPUT_PULLUP);
+  pinMode(IR_SENSOR,INPUT);
+
+  digitalWrite(SERVO,0);
+
 
   /// ##################################
   /// Timer Setup 
@@ -571,6 +705,7 @@ void setup()
   timerAlarmEnable(timer1);
   /// ##################################
   
+
   /// ##################################
   /// PS5 Controller Setup
   //ps5.attach(notify);
@@ -585,6 +720,17 @@ void setup()
   Serial.println("Ready.");
   /// ##################################
 
+
+  /// ##################################
+  /// PID safety code !!!
+  ControlPID.SetOutputLimits(-80,80);
+
+  ControlPID.SetSampleTime(20);
+
+  ControlPID.SetMode(AUTOMATIC);
+  /// ##################################
+
+
   /// ##################################
   /// Encdoer Setup 
   encoder_left = new RotaryEncoder(ENCODER_LEFT_A, ENCODER_LEFT_B, RotaryEncoder::LatchMode::TWO03);
@@ -595,6 +741,7 @@ void setup()
   attachInterrupt(digitalPinToInterrupt(ENCODER_RIGHT_B), checkPositon, CHANGE);
   /// ##################################
 
+
   /// ##################################
   /// BNO085 Setup
   bno085.begin_I2C();
@@ -602,9 +749,12 @@ void setup()
   bno085.enableReport(SH2_GYROSCOPE_CALIBRATED);
   /// ##################################
 
+
   /// ##################################
   /// Ticker Initialize
   uartTimer.attach(0.01, UART_send_data);
+  controlTimer.attach(0.02, updateControl);
+  SerialTimer.attach(0.01, SerialTick);
   /// ##################################
 }
 
@@ -616,43 +766,67 @@ void loop()
   analog_rx = ps5.RStickX();
   analog_right = deadzone(analog_rx);
   analog_left = deadzone(analog_ly);
-  angular_velocity = map(analog_right,-128,127,-max_angular_speed,max_angular_speed);
+  angular_velocity = -map(analog_right,-128,127,-max_angular_speed,max_angular_speed); // deg
   linear_velocity = map(analog_left,-128,127,-(max_speed * 1000),(max_speed * 1000)) / 1000.0;
   zero_handle(); /// Handle zero deadzone case.
+
+
+  if (angular_velocity != 0) {
+    rotating = true;
+  } else{
+    rotating = false;
+  }
 
   /// Convert angular velocity for negative velocity case.
   if (linear_velocity < 0){
     angular_velocity = -angular_velocity;
   }
 
+  command_angular_speed = deg2rad(angular_velocity);
+
   /// Use differential drive equations to calculate velocities and convert to PWM values.
-  diffdrive_equation(linear_velocity,deg2rad(-angular_velocity),wheel_distance, left_wheel_velocity, right_wheel_velocity);
-  PWM_left = speed2pwm(left_wheel_velocity);
-  PWM_right = speed2pwm(right_wheel_velocity);
+  diffdrive_equation(linear_velocity,deg2rad(angular_velocity),wheel_distance, left_wheel_velocity, right_wheel_velocity);
 
-  /// Handle ramping acceleration/deceleration.
-  if (ramping_tick){
-    ramping_tick = false;
-    PWM_ramping();
-    control((int)round(current_PWM_left),(int)round(current_PWM_right), 0); // Main control function.
+  if (abs(left_wheel_velocity - targetWheelL) > 0.01 || abs(right_wheel_velocity - targetWheelR) > 0.01) {
+    startWheelL = currentProfiledWheelL;
+    startWheelR = currentProfiledWheelR;
+    targetWheelL = left_wheel_velocity;
+    targetWheelR = right_wheel_velocity;
+    moveStartTime = millis();
   }
-
-  static int pos_left = 0;
-  static int pos_right = 0;
-
-  encoder_left->tick(); // just call tick() to check the state.
-  encoder_right->tick();
-
-  // encoder_read(pos_left, pos_right);
-  encoder_calculate();
-  // encoder_debug();
-  IMU_Quaternion();
+  
+  
+  /// Handle ramping acceleration/deceleration.
+  if (timer_tick){
+    timer_tick = false;
+    //encoder_debug();
+    IMU_Angular();
+    IMU_Quaternion();
+    
+    // PID_debug();
+    // Serial.print(velocity_mps_left);
+    // Serial.print(" ");
+    // Serial.print(velocity_mps_right);
+    // Serial.print(" ");
+    // Serial.println(velocity_mps_left - velocity_mps_right);
+  }
+  
+  
+  
   /// ################################################
   /// UART Zone
-  if (Serial2.available() >= (ARRAY_SIZE * sizeof(float))) {
+  if (serial_handle){
+    serial_handle = false;
+
+    if (Serial2.available() >= (ARRAY_SIZE * sizeof(float))) {
     
-    Serial2.readBytes((char*)incomingData, (ARRAY_SIZE * sizeof(float)));
-    Serial.printf("RX Float: &.2f\n", incomingData[0]);
+      Serial2.readBytes((char*)incomingData, (ARRAY_SIZE * sizeof(float)));
+      Serial.print(incomingData[0]);
+      Serial.print(" | ");
+      Serial.println(incomingData[1]);
+      // Serial.printf("RX Float: &.2f\n", incomingData[0]);
+    }
   }
+  
   /// ################################################
 }
