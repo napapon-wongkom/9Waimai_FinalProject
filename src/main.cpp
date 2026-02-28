@@ -5,6 +5,8 @@
 #include <Arduino.h>
 #include <Ticker.h>
 #include <PID_v1.h>
+#include <AccelStepper.h>
+#include <ESP32Servo.h>
 /// ######################################################################################
 /// Variable
 /// ######################################################################################
@@ -29,15 +31,30 @@
 #define SERVO 23
 #define HALL_SENSOR 5
 #define IR_SENSOR 34
+#define DOWN_STEP 13
+#define DOWN_DIR 25
+#define UP_STEP 32
+#define UP_DIR 33
+#define motorInterfaceType 1 
 /// ##############################################
 
 
-
+Servo GripServo;
 hw_timer_t *timer1 = NULL;
 Adafruit_BNO08x bno085 = Adafruit_BNO08x();
 unsigned long lastTimeStamp = 0;
+/// ###############################################
+/// JoyStick Variable
 int analog_ly = 0;
 int analog_rx = 0;
+int up_btn = 0;
+int down_btn = 0;
+int left_btn = 0;
+int rigth_btn = 0;
+int cross_btn = 0;
+int circle_btn = 0;
+/// ###############################################
+
 volatile float PWM_left; // Command PWM left
 volatile float PWM_right; // Command PWM right
 float analog_left;
@@ -51,6 +68,15 @@ volatile bool timer_tick = false; // To tick ramping function
 volatile bool serial_handle = false;
 const double IMU_noise = 0.03;
 
+float cmd_vel_L = 0;
+float cmd_vel_R = 0;
+
+/// ##############################################
+/// Robot State
+bool rotating;
+
+bool manual_mode = 1;
+/// ##############################################
 
 /// ##############################################
 /// Robot Spec
@@ -64,6 +90,15 @@ const float MOTOR2ENCODE_RATIO = 1; //70.0/40.0; // Gear ratio from moter to enc
 const float WHEEL_CIRCUMFERENCE = PI * wheel_diameter; // 2*PI*R
 /// ##############################################
 
+/// ##############################################
+/// Stepper Initailize
+AccelStepper down_stepper(motorInterfaceType, DOWN_STEP, DOWN_DIR);
+AccelStepper up_stepper(motorInterfaceType, UP_STEP, UP_DIR);
+int up_step_max_speed = 4000;
+int up_step_max_acc = up_step_max_speed * 2;
+int down_step_max_speed = 4000;
+int down_step_max_acc = down_step_max_speed * 2;
+/// ##############################################
 
 /// ##############################################
 /// Physical Variables
@@ -74,10 +109,9 @@ float velocity_mps_left = 0.0; // Reality left wheel velocity (m/s)
 float velocity_mps_right = 0.0; // Reality right wheel velocity (m/s)
 /// ##############################################
 
-
 /// ##############################################
 /// Differential Drive Variables
-const float max_speed = 0.3; //Max linear speed in m/s
+const float max_speed = 0.5; //Max linear speed in m/s
 const float max_angular_speed = 30.0; //Max angular speed in deg/s
 /// ##############################################
 
@@ -113,7 +147,6 @@ float yaw = 0;
 
 uint32_t last_imu_time = 0;
 double angular_vel_z = 0.0; // IMU angular velocity
-float angular_accel_z;
 /// ###############################################
 
 
@@ -146,7 +179,7 @@ double PIDsetpoint; // Desire value for PID left
 double PIDinput; // Reality current value for PID left
 double PIDoutput; // Output value for PID left
 /// PID Setup
-double Kp=200, Ki=5, Kd=1;
+double Kp=500, Ki=50, Kd=1;
 unsigned long straightStartTime = 0;
 const float FADE_DURATION = 500.0; // Half a second fade-in
 
@@ -171,20 +204,28 @@ const float JOYSTICK_THRESHOLD = 0.02; // 2% change triggers new ramp
 
 /// ##############################################
 /// Command Variable
-float command_angular_speed = 0; // Command Angular speed rad/s
 float L_PWM_out = 0;
 float R_PWM_out = 0;
 /// ##############################################
 
 /// ##############################################
-/// Robot State
-bool rotating;
-/// ##############################################
-
-
-/// ##############################################
 /// Safety Variable
 const int SAFETY_PWM = 177; // To prevent PWM from exceed
+/// ##############################################
+
+/// ###########################################################################################
+/// ARM CODE
+bool Home_pose = false;
+float Home_status = 0;
+int hall_sensor = 1;
+int ir_sensor = 0;
+float up_stepper_pos = 0;
+float down_stepper_pos = 0;
+/// ###########################################################################################
+
+/// ##############################################
+/// Initial Value
+int pos = 0;
 /// ##############################################
 
 
@@ -327,6 +368,8 @@ void SerialTick() {
   serial_handle = true;
 }
 
+
+
 void control(int PWM_l, int PWM_r, int debug_mode){
   /*
     Function to control motor PWM based on desired left and right PWM values.
@@ -452,7 +495,6 @@ void encoder_calculate() {
     float raw_vel_L = delta_dist_L / dt;
     float raw_vel_R = delta_dist_R / dt;
 
-
     // velocity_mps_left = raw_vel_L;
     // velocity_mps_right = raw_vel_R;
 
@@ -503,24 +545,20 @@ void IMU_Angular(){
   if (bno085.getSensorEvent(&Angular_Value)){
     if (Angular_Value.sensorId == SH2_GYROSCOPE_CALIBRATED) {
       angular_vel_z = Angular_Value.un.gyroscope.z;
-
-      // Serial.print("Angular Velocity :");
-      // Serial.print(angular_velocity);
-      // Serial.print(" | ");
-      // Serial.println(angular_vel_z);
     }
   }
 }
 
-void UART_send_data(){
+
+void UART_bridge(){
   outgoingData[0] = (float)millis();
   outgoingData[1] = currentPos_left;
   outgoingData[2] = currentPos_right;
   outgoingData[3] = yaw;
   outgoingData[4] = 0;
-  outgoingData[5] = 0;
-  outgoingData[6] = 0;
-  outgoingData[7] = angular_accel_z;
+  outgoingData[5] = Home_status;
+  outgoingData[6] = down_stepper_pos;
+  outgoingData[7] = up_stepper_pos;
   outgoingData[8] = PIDsetpoint;
   outgoingData[9] = PIDinput;
   outgoingData[10] = PIDoutput;
@@ -531,6 +569,22 @@ void UART_send_data(){
   Serial2.write(header);
 
   Serial2.write((uint8_t*)outgoingData, sizeof(outgoingData));
+
+
+
+  while (Serial2.available() > 0 && Serial2.peek() != 0xAA){
+      Serial2.read();
+    }
+
+  if (Serial2.available() >= (1 + ARRAY_SIZE * sizeof(float))) {
+    uint8_t header = Serial2.read();
+
+    if (header == 0xAA){
+      Serial2.readBytes((char*)incomingData, sizeof(incomingData));
+      cmd_vel_L = incomingData[0];
+      cmd_vel_R = incomingData[1];
+    }
+  }
 }
 
 void encoder_debug(){
@@ -598,6 +652,109 @@ void PID_debug(){
   Serial.println(R_PWM_out);
 }
 
+void PS5receiver(){
+  analog_ly = ps5.LStickY();
+  analog_rx = ps5.RStickX();
+  analog_right = deadzone(analog_rx);
+  analog_left = deadzone(analog_ly);
+  angular_velocity = -map(analog_right,-128,127,-max_angular_speed,max_angular_speed); // deg
+  linear_velocity = map(analog_left,-128,127,-(max_speed * 1000),(max_speed * 1000)) / 1000.0;
+  zero_handle(); /// Handle zero deadzone case.
+}
+
+void ControlMode(){
+  int triangle = ps5.Triangle();
+  int square = ps5.Square();
+  if ((triangle == 1)){
+    manual_mode = 1;
+  }else if (square == 1){
+    manual_mode = 0;
+  }
+}
+
+void Set_Home(){
+  if (Home_pose == false){
+    hall_sensor = digitalRead(HALL_SENSOR);
+    ir_sensor = digitalRead(IR_SENSOR);
+
+    if (hall_sensor != 0){
+      up_stepper.setSpeed(up_step_max_speed);
+    }else if (ir_sensor != 1){
+      up_stepper.setCurrentPosition(0);
+      up_stepper.setSpeed(0);
+      down_stepper.setSpeed(-down_step_max_speed);
+    }else{
+      down_stepper.setSpeed(0);
+      down_stepper.setCurrentPosition(0);
+      Home_pose = true;
+    }
+  }
+}
+
+void manual_stepper_control(){
+  up_btn = ps5.Up();
+  down_btn = ps5.Down();
+  left_btn = ps5.Left();
+  rigth_btn = ps5.Right();
+  cross_btn = ps5.Cross();
+  circle_btn = ps5.Circle();
+
+  
+  hall_sensor = digitalRead(HALL_SENSOR);
+  ir_sensor = digitalRead(IR_SENSOR);
+
+  /// UP STEPPER #######################################
+  if (hall_sensor == 1){
+    if (up_btn == 1){
+      up_stepper.setSpeed(-up_step_max_speed);
+      if( up_stepper_pos < -54000.0){
+        up_stepper.setSpeed(up_step_max_speed);
+      }
+    }else if (down_btn == 1) {
+      up_stepper.setSpeed(up_step_max_speed);
+    } else{
+      up_stepper.setSpeed(0);
+    }
+  }else if (hall_sensor == 0){
+    if (up_stepper_pos != 0){
+      up_stepper.setCurrentPosition(0);
+    }
+    up_stepper.setSpeed(-up_step_max_speed);
+  }
+  
+
+  /// DOWN STEPPER #######################################
+  if (ir_sensor == 0){
+    if (rigth_btn == 1){
+      down_stepper.setSpeed(down_step_max_speed);
+      if (down_stepper_pos >= 26000.0){
+        down_stepper.setSpeed(-down_step_max_speed);
+      }
+    } else if (left_btn == 1) {
+      down_stepper.setSpeed(-down_step_max_speed);
+    } else {
+      down_stepper.setSpeed(0);
+    }
+  }else if (ir_sensor == 1){
+    if (down_stepper_pos != 0){
+      down_stepper.setCurrentPosition(0);
+    }
+    down_stepper.setSpeed(down_step_max_speed);
+  }
+
+  
+  
+
+  if (cross_btn == 1){
+    GripServo.write(80);
+  }
+
+  if (circle_btn == 1){
+    GripServo.write(10);
+  }
+  
+}
+
 void updateControl(){
   /// S-Curve calculate
   unsigned long elapsed = millis() - moveStartTime;
@@ -661,15 +818,6 @@ void updateControl(){
     L_PWM_out = PWM_left;
     R_PWM_out = PWM_right;
   }
-  
-
-  // if (abs(command_angular_speed - angular_vel_z) < IMU_noise){
-  //   PIDinput = command_angular_speed;
-  // } else{
-  //   PIDinput = angular_vel_z;
-  // }
-  
-  
 
   
   control((int)round(L_PWM_out),(int)round(R_PWM_out), 0);
@@ -683,18 +831,21 @@ void updateControl(){
 void setup() 
 {
   Serial.begin(115200); /// Set Serial Baud rate.
-  Serial2.begin(115200, SERIAL_8N1, RXD2, TXD2);
+  Serial2.begin(115200, SERIAL_8N1, RXD2, TXD2); /// UART Setup
 
+  /// ##################################
+  /// Pin Setup
   pinMode(PWML_F,OUTPUT);
   pinMode(PWML_B,OUTPUT);
   pinMode(PWMR_F,OUTPUT);
   pinMode(PWMR_B,OUTPUT);
 
-  pinMode(SERVO, OUTPUT);
   pinMode(HALL_SENSOR, INPUT_PULLUP);
   pinMode(IR_SENSOR,INPUT);
+  /// ##################################
 
-  digitalWrite(SERVO,0);
+  GripServo.attach(SERVO);
+  GripServo.write(90);
 
 
   /// ##################################
@@ -708,7 +859,6 @@ void setup()
 
   /// ##################################
   /// PS5 Controller Setup
-  //ps5.attach(notify);
   ps5.attachOnConnect(onConnect);
   ps5.attachOnDisconnect(onDisConnect);
   ps5.begin("90:B6:85:3C:00:79");  /// your PS5 controller mac address.
@@ -718,6 +868,15 @@ void setup()
     delay(300);
   }
   Serial.println("Ready.");
+  /// ##################################
+
+  /// ##################################
+  /// Stepper setup
+  /// 200 step  = 1 rev
+  up_stepper.setMaxSpeed(up_step_max_speed);
+  up_stepper.setAcceleration(up_step_max_acc);
+  down_stepper.setMaxSpeed(down_step_max_speed);
+  down_stepper.setAcceleration(down_step_max_acc);
   /// ##################################
 
 
@@ -752,57 +911,52 @@ void setup()
 
   /// ##################################
   /// Ticker Initialize
-  uartTimer.attach(0.01, UART_send_data);
+  uartTimer.attach(0.01, UART_bridge);
   controlTimer.attach(0.02, updateControl);
   SerialTimer.attach(0.01, SerialTick);
-  /// ##################################
 }
 
+
+
+/// LOOP # -----------------------------------------------------------------------------------------------------
 void loop() 
 {
   
   /// Read PS5 Controller Joystick values and calculate desired velocities.
-  analog_ly = ps5.LStickY();
-  analog_rx = ps5.RStickX();
-  analog_right = deadzone(analog_rx);
-  analog_left = deadzone(analog_ly);
-  angular_velocity = -map(analog_right,-128,127,-max_angular_speed,max_angular_speed); // deg
-  linear_velocity = map(analog_left,-128,127,-(max_speed * 1000),(max_speed * 1000)) / 1000.0;
-  zero_handle(); /// Handle zero deadzone case.
+  PS5receiver();
 
-
-  if (angular_velocity != 0) {
-    rotating = true;
-  } else{
-    rotating = false;
+  /// ################################################
+  /// UART Zone
+  if (serial_handle){
+    serial_handle = false;
+    // Serial.print(cmd_vel_L);
+    // Serial.print(" | ");
+    // Serial.print(cmd_vel_R);
+    // Serial.print(" | ");
+    // Serial.println(cmd_vel_L - cmd_vel_R);
+    
+    
+    Serial.print(up_stepper_pos);
+    Serial.print(" | ");
+    Serial.println(down_stepper_pos);
+    
   }
 
-  /// Convert angular velocity for negative velocity case.
-  if (linear_velocity < 0){
-    angular_velocity = -angular_velocity;
-  }
-
-  command_angular_speed = deg2rad(angular_velocity);
-
-  /// Use differential drive equations to calculate velocities and convert to PWM values.
-  diffdrive_equation(linear_velocity,deg2rad(angular_velocity),wheel_distance, left_wheel_velocity, right_wheel_velocity);
-
-  if (abs(left_wheel_velocity - targetWheelL) > 0.01 || abs(right_wheel_velocity - targetWheelR) > 0.01) {
-    startWheelL = currentProfiledWheelL;
-    startWheelR = currentProfiledWheelR;
-    targetWheelL = left_wheel_velocity;
-    targetWheelR = right_wheel_velocity;
-    moveStartTime = millis();
-  }
-  
-  
-  /// Handle ramping acceleration/deceleration.
   if (timer_tick){
     timer_tick = false;
+    up_stepper_pos = up_stepper.currentPosition();
+    down_stepper_pos = down_stepper.currentPosition();
     //encoder_debug();
-    IMU_Angular();
+    // IMU_Angular();
     IMU_Quaternion();
-    
+    Set_Home();
+    if (Home_pose == true){
+      Home_status = 1;
+      manual_stepper_control();
+    }
+    ControlMode();
+    // up_stepper.run();
+    // down_stepper.run();
     // PID_debug();
     // Serial.print(velocity_mps_left);
     // Serial.print(" ");
@@ -810,23 +964,55 @@ void loop()
     // Serial.print(" ");
     // Serial.println(velocity_mps_left - velocity_mps_right);
   }
-  
+
   
   
   /// ################################################
-  /// UART Zone
-  if (serial_handle){
-    serial_handle = false;
+  
+  if (cmd_vel_L > 0.5){
+    cmd_vel_L = 0.5;
+  }else if (cmd_vel_R > 0.5){
+    cmd_vel_R = 0.5;
+  }else if (cmd_vel_L < -0.5){
+    cmd_vel_L = -0.5;
+  }else if (cmd_vel_R < -0.5){
+    cmd_vel_R = -0.5;
+  }
 
-    if (Serial2.available() >= (ARRAY_SIZE * sizeof(float))) {
-    
-      Serial2.readBytes((char*)incomingData, (ARRAY_SIZE * sizeof(float)));
-      Serial.print(incomingData[0]);
-      Serial.print(" | ");
-      Serial.println(incomingData[1]);
-      // Serial.printf("RX Float: &.2f\n", incomingData[0]);
-    }
+
+  if ((angular_velocity != 0) || (abs(cmd_vel_L - cmd_vel_R) > 0.008)) {
+    rotating = true;
+  } else{
+    rotating = false;
+  }
+
+
+  /// Convert angular velocity for negative velocity case.
+  if (linear_velocity < 0){
+    angular_velocity = -angular_velocity;
+  }
+
+  up_stepper.runSpeed();
+  down_stepper.runSpeed();
+  // up_stepper.run();
+  // down_stepper.run();
+
+  /// Use differential drive equations to calculate velocities and convert to PWM values.
+  if (manual_mode == 1){
+    diffdrive_equation(linear_velocity,deg2rad(angular_velocity),wheel_distance, left_wheel_velocity, right_wheel_velocity);
+  // left_wheel_velocity = cmd_vel_L;
+  }else if(manual_mode == 0){
+    left_wheel_velocity = cmd_vel_L;
+    right_wheel_velocity = cmd_vel_R;
   }
   
-  /// ################################################
+  // right_wheel_velocity = cmd_vel_R;
+  if (abs(left_wheel_velocity - targetWheelL) > 0.01 || abs(right_wheel_velocity - targetWheelR) > 0.01) {
+    startWheelL = currentProfiledWheelL;
+    startWheelR = currentProfiledWheelR;
+    targetWheelL = left_wheel_velocity;
+    targetWheelR = right_wheel_velocity;
+    moveStartTime = millis();
+  }
+
 }
