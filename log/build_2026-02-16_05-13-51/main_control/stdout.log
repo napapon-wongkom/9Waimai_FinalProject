@@ -1,0 +1,24 @@
+running develop
+running egg_info
+creating main_control.egg-info
+writing main_control.egg-info/PKG-INFO
+writing dependency_links to main_control.egg-info/dependency_links.txt
+writing entry points to main_control.egg-info/entry_points.txt
+writing requirements to main_control.egg-info/requires.txt
+writing top-level names to main_control.egg-info/top_level.txt
+writing manifest file 'main_control.egg-info/SOURCES.txt'
+reading manifest file 'main_control.egg-info/SOURCES.txt'
+writing manifest file 'main_control.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/nawako05/finalproject_ws/install/main_control/lib/python3.12/site-packages/main-control.egg-link (link to .)
+Installing lidar_filter script to /home/nawako05/finalproject_ws/install/main_control/lib/main_control
+
+Installed /home/nawako05/finalproject_ws/build/main_control
+running symlink_data
+creating /home/nawako05/finalproject_ws/install/main_control/share/ament_index
+creating /home/nawako05/finalproject_ws/install/main_control/share/ament_index/resource_index
+creating /home/nawako05/finalproject_ws/install/main_control/share/ament_index/resource_index/packages
+symbolically linking /home/nawako05/finalproject_ws/build/main_control/resource/main_control -> /home/nawako05/finalproject_ws/install/main_control/share/ament_index/resource_index/packages
+symbolically linking /home/nawako05/finalproject_ws/build/main_control/package.xml -> /home/nawako05/finalproject_ws/install/main_control/share/main_control
+creating /home/nawako05/finalproject_ws/install/main_control/share/main_control/launch
+symbolically linking /home/nawako05/finalproject_ws/build/main_control/launch/robot.launch.py -> /home/nawako05/finalproject_ws/install/main_control/share/main_control/launch

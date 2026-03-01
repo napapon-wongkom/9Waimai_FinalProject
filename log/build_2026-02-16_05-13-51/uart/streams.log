@@ -1,0 +1,27 @@
+[2.772s] Invoking command in '/home/nawako05/finalproject_ws/build/uart': PYTHONPATH=/home/nawako05/finalproject_ws/build/uart/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nawako05/finalproject_ws/install/uart/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nawako05/finalproject_ws/build/uart/build --no-deps symlink_data
+[3.801s] running develop
+[4.234s] /usr/lib/python3/dist-packages/setuptools/command/easy_install.py:363: UserWarning: Unbuilt egg for pytest-repeat [unknown version] (/usr/lib/python3/dist-packages)
+[4.235s]   self.local_index = Environment(self.shadow_path + sys.path)
+[4.319s] running egg_info
+[4.319s] creating uart.egg-info
+[4.427s] writing uart.egg-info/PKG-INFO
+[4.427s] writing dependency_links to uart.egg-info/dependency_links.txt
+[4.428s] writing entry points to uart.egg-info/entry_points.txt
+[4.428s] writing requirements to uart.egg-info/requires.txt
+[4.428s] writing top-level names to uart.egg-info/top_level.txt
+[4.428s] writing manifest file 'uart.egg-info/SOURCES.txt'
+[4.530s] reading manifest file 'uart.egg-info/SOURCES.txt'
+[4.531s] writing manifest file 'uart.egg-info/SOURCES.txt'
+[4.591s] running build_ext
+[4.591s] Creating /home/nawako05/finalproject_ws/install/uart/lib/python3.12/site-packages/uart.egg-link (link to .)
+[4.591s] Installing data_process script to /home/nawako05/finalproject_ws/install/uart/lib/uart
+[4.592s] Installing uart_node script to /home/nawako05/finalproject_ws/install/uart/lib/uart
+[4.592s] 
+[4.592s] Installed /home/nawako05/finalproject_ws/build/uart
+[4.592s] running symlink_data
+[4.592s] creating /home/nawako05/finalproject_ws/install/uart/share/ament_index
+[4.593s] creating /home/nawako05/finalproject_ws/install/uart/share/ament_index/resource_index
+[4.593s] creating /home/nawako05/finalproject_ws/install/uart/share/ament_index/resource_index/packages
+[4.593s] symbolically linking /home/nawako05/finalproject_ws/build/uart/resource/uart -> /home/nawako05/finalproject_ws/install/uart/share/ament_index/resource_index/packages
+[4.593s] symbolically linking /home/nawako05/finalproject_ws/build/uart/package.xml -> /home/nawako05/finalproject_ws/install/uart/share/uart
+[4.714s] Invoked command in '/home/nawako05/finalproject_ws/build/uart' returned '0': PYTHONPATH=/home/nawako05/finalproject_ws/build/uart/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nawako05/finalproject_ws/install/uart/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nawako05/finalproject_ws/build/uart/build --no-deps symlink_data

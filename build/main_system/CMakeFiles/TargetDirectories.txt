@@ -1,0 +1,9 @@
+/home/nawako05/finalproject_ws/build/main_system/CMakeFiles/uninstall.dir
+/home/nawako05/finalproject_ws/build/main_system/CMakeFiles/main_system_uninstall.dir
+/home/nawako05/finalproject_ws/build/main_system/CMakeFiles/test.dir
+/home/nawako05/finalproject_ws/build/main_system/CMakeFiles/edit_cache.dir
+/home/nawako05/finalproject_ws/build/main_system/CMakeFiles/rebuild_cache.dir
+/home/nawako05/finalproject_ws/build/main_system/CMakeFiles/list_install_components.dir
+/home/nawako05/finalproject_ws/build/main_system/CMakeFiles/install.dir
+/home/nawako05/finalproject_ws/build/main_system/CMakeFiles/install/local.dir
+/home/nawako05/finalproject_ws/build/main_system/CMakeFiles/install/strip.dir

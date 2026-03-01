@@ -1,0 +1,2 @@
+[console_scripts]
+pid_debug = debugger.pid_debug:main

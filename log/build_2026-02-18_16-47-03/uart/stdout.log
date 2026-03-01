@@ -1,0 +1,16 @@
+running develop
+running egg_info
+writing uart.egg-info/PKG-INFO
+writing dependency_links to uart.egg-info/dependency_links.txt
+writing entry points to uart.egg-info/entry_points.txt
+writing requirements to uart.egg-info/requires.txt
+writing top-level names to uart.egg-info/top_level.txt
+reading manifest file 'uart.egg-info/SOURCES.txt'
+writing manifest file 'uart.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/nawako05/finalproject_ws/install/uart/lib/python3.12/site-packages/uart.egg-link (link to .)
+Installing data_process script to /home/nawako05/finalproject_ws/install/uart/lib/uart
+Installing uart_node script to /home/nawako05/finalproject_ws/install/uart/lib/uart
+
+Installed /home/nawako05/finalproject_ws/build/uart
+running symlink_data

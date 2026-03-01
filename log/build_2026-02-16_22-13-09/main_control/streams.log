@@ -1,0 +1,19 @@
+[5.516s] Invoking command in '/home/nawako05/finalproject_ws/build/main_control': PYTHONPATH=/home/nawako05/finalproject_ws/build/main_control/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nawako05/finalproject_ws/install/main_control/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nawako05/finalproject_ws/build/main_control/build --no-deps symlink_data
+[6.829s] running develop
+[7.365s] /usr/lib/python3/dist-packages/setuptools/command/easy_install.py:363: UserWarning: Unbuilt egg for pytest-repeat [unknown version] (/usr/lib/python3/dist-packages)
+[7.368s]   self.local_index = Environment(self.shadow_path + sys.path)
+[7.463s] running egg_info
+[7.642s] writing main_control.egg-info/PKG-INFO
+[7.643s] writing dependency_links to main_control.egg-info/dependency_links.txt
+[7.647s] writing entry points to main_control.egg-info/entry_points.txt
+[7.648s] writing requirements to main_control.egg-info/requires.txt
+[7.649s] writing top-level names to main_control.egg-info/top_level.txt
+[7.771s] reading manifest file 'main_control.egg-info/SOURCES.txt'
+[7.772s] writing manifest file 'main_control.egg-info/SOURCES.txt'
+[7.842s] running build_ext
+[7.843s] Creating /home/nawako05/finalproject_ws/install/main_control/lib/python3.12/site-packages/main-control.egg-link (link to .)
+[7.846s] Installing lidar_filter script to /home/nawako05/finalproject_ws/install/main_control/lib/main_control
+[7.849s] 
+[7.850s] Installed /home/nawako05/finalproject_ws/build/main_control
+[7.850s] running symlink_data
+[8.110s] Invoked command in '/home/nawako05/finalproject_ws/build/main_control' returned '0': PYTHONPATH=/home/nawako05/finalproject_ws/build/main_control/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nawako05/finalproject_ws/install/main_control/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nawako05/finalproject_ws/build/main_control/build --no-deps symlink_data

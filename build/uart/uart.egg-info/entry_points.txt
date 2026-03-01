@@ -1,0 +1,3 @@
+[console_scripts]
+data_process = uart.data_in_transfer:main
+uart_node = uart.uart_com:main

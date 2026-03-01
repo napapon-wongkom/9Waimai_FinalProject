@@ -1,0 +1,19 @@
+[5.133s] Invoking command in '/home/nawako05/finalproject_ws/build/debugger': PYTHONPATH=/home/nawako05/finalproject_ws/build/debugger/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nawako05/finalproject_ws/install/debugger/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nawako05/finalproject_ws/build/debugger/build --no-deps symlink_data
+[6.537s] running develop
+[7.103s] /usr/lib/python3/dist-packages/setuptools/command/easy_install.py:363: UserWarning: Unbuilt egg for pytest-repeat [unknown version] (/usr/lib/python3/dist-packages)
+[7.104s]   self.local_index = Environment(self.shadow_path + sys.path)
+[7.232s] running egg_info
+[7.422s] writing debugger.egg-info/PKG-INFO
+[7.423s] writing dependency_links to debugger.egg-info/dependency_links.txt
+[7.424s] writing entry points to debugger.egg-info/entry_points.txt
+[7.427s] writing requirements to debugger.egg-info/requires.txt
+[7.428s] writing top-level names to debugger.egg-info/top_level.txt
+[7.617s] reading manifest file 'debugger.egg-info/SOURCES.txt'
+[7.618s] writing manifest file 'debugger.egg-info/SOURCES.txt'
+[7.742s] running build_ext
+[7.743s] Creating /home/nawako05/finalproject_ws/install/debugger/lib/python3.12/site-packages/debugger.egg-link (link to .)
+[7.745s] Installing pid_debug script to /home/nawako05/finalproject_ws/install/debugger/lib/debugger
+[7.749s] 
+[7.750s] Installed /home/nawako05/finalproject_ws/build/debugger
+[7.750s] running symlink_data
+[8.884s] Invoked command in '/home/nawako05/finalproject_ws/build/debugger' returned '0': PYTHONPATH=/home/nawako05/finalproject_ws/build/debugger/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nawako05/finalproject_ws/install/debugger/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nawako05/finalproject_ws/build/debugger/build --no-deps symlink_data

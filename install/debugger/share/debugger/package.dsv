@@ -1,0 +1,9 @@
+source;share/debugger/hook/pythonpath.ps1
+source;share/debugger/hook/pythonpath.dsv
+source;share/debugger/hook/pythonpath.sh
+source;share/debugger/hook/ament_prefix_path.ps1
+source;share/debugger/hook/ament_prefix_path.dsv
+source;share/debugger/hook/ament_prefix_path.sh
+source;../../build/debugger/share/debugger/hook/pythonpath_develop.ps1
+source;../../build/debugger/share/debugger/hook/pythonpath_develop.dsv
+source;../../build/debugger/share/debugger/hook/pythonpath_develop.sh

@@ -1,0 +1,19 @@
+[4.477s] Invoking command in '/home/nawako05/finalproject_ws/build/manual_command': PYTHONPATH=/home/nawako05/finalproject_ws/build/manual_command/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nawako05/finalproject_ws/install/manual_command/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nawako05/finalproject_ws/build/manual_command/build --no-deps symlink_data
+[6.003s] running develop
+[6.718s] /usr/lib/python3/dist-packages/setuptools/command/easy_install.py:363: UserWarning: Unbuilt egg for pytest-repeat [unknown version] (/usr/lib/python3/dist-packages)
+[6.718s]   self.local_index = Environment(self.shadow_path + sys.path)
+[6.836s] running egg_info
+[7.022s] writing manual_command.egg-info/PKG-INFO
+[7.023s] writing dependency_links to manual_command.egg-info/dependency_links.txt
+[7.023s] writing entry points to manual_command.egg-info/entry_points.txt
+[7.024s] writing requirements to manual_command.egg-info/requires.txt
+[7.028s] writing top-level names to manual_command.egg-info/top_level.txt
+[7.312s] reading manifest file 'manual_command.egg-info/SOURCES.txt'
+[7.316s] writing manifest file 'manual_command.egg-info/SOURCES.txt'
+[7.533s] running build_ext
+[7.534s] Creating /home/nawako05/finalproject_ws/install/manual_command/lib/python3.12/site-packages/manual-command.egg-link (link to .)
+[7.535s] Installing move_forward script to /home/nawako05/finalproject_ws/install/manual_command/lib/manual_command
+[7.538s] 
+[7.539s] Installed /home/nawako05/finalproject_ws/build/manual_command
+[7.539s] running symlink_data
+[8.506s] Invoked command in '/home/nawako05/finalproject_ws/build/manual_command' returned '0': PYTHONPATH=/home/nawako05/finalproject_ws/build/manual_command/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nawako05/finalproject_ws/install/manual_command/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nawako05/finalproject_ws/build/manual_command/build --no-deps symlink_data

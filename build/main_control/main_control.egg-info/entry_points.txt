@@ -1,0 +1,10 @@
+[console_scripts]
+command_input = main_control.command:main
+compensator = main_control.deadband_compensator:main
+floor_manager = main_control.multifloor:main
+hardware_bridge = main_control.hardware_bridge:main
+lidar_filter = main_control.lidar_filter:main
+sequence = main_control.Sequence_Move:main
+setpose = main_control.reset_position:main
+state_machine = main_control.state_machine:main
+waypoint_manage = main_control.waypoint_manager:main

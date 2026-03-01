@@ -1,0 +1,13 @@
+package.xml
+setup.cfg
+setup.py
+manual_command/__init__.py
+manual_command/movefoward.py
+manual_command.egg-info/PKG-INFO
+manual_command.egg-info/SOURCES.txt
+manual_command.egg-info/dependency_links.txt
+manual_command.egg-info/entry_points.txt
+manual_command.egg-info/requires.txt
+manual_command.egg-info/top_level.txt
+manual_command.egg-info/zip-safe
+resource/manual_command

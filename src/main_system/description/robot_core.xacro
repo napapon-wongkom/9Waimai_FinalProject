@@ -1,0 +1,272 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+    <material name="white">
+        <color rgba = "1 1 1 1"/>
+    </material>
+
+    <material name="black">
+        <color rgba = "0 0 0 1"/>
+    </material>
+
+    <material name="aluminium">
+        <color rgba = "0.6627 0.6745 0.7137 1"/>
+    </material>
+
+    <material name="gray">
+        <color rgba="0.5 0.5 0.5 1"/>
+    </material>
+
+    <!-- /////////////////////// BASE LINK /////////////////////// -->
+
+    <link name="base_link">
+
+    </link>
+
+    <!-- /////////////////////// BASE FOOTPRINT LINK /////////////////////// -->
+
+    <joint name="base_footprint_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="base_link"/>
+        <origin xyz="0 0 0.1" rpy="0 0 0"/>
+    </joint>
+
+    <link name="base_footprint">
+
+    </link>
+    
+    <!-- /////////////////////// CHASSIS LINK /////////////////////// -->
+
+    <joint name="chassis_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="chassis"/>
+        <origin xyz="0 0 0.0695"/>
+    </joint>
+
+    <link name="chassis">
+        <visual>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <!-- <box size="0.7 0.7 0.29"/> -->
+                <mesh filename="package://main_system/mesh/Robot_Chassis.stl"/>
+            </geometry>
+            <material name="aluminium"/>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0"/>
+            <geometry>
+                <box size="0.7 0.7 0.255"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <!-- /////////////////////// LEFT DRIVE WHEEL LINK /////////////////////// -->
+
+    <joint name="left_drive_wheel_joint" type="continuous">
+        <parent link="chassis"/>
+        <child link="left_drive_wheel"/>
+        <origin xyz="0 0.2375 -0.0695" rpy="0 0 -${pi/2}"/>
+        <axis xyz="-1 0 0"/>
+    </joint>
+
+    <link name="left_drive_wheel">
+        <visual>
+            <geometry>
+                <!-- <cylinder radius="0.1" length="0.035"/> -->
+                <mesh filename="package://main_system/mesh/Wheels_8_inches.stl"/>
+            </geometry>
+            <!-- <material name="black"/> -->
+        </visual>
+        <!-- <collision>
+            <origin xyz="0 0 0" rpy="0 -${pi/2} 0"/>
+            <geometry>
+                <cylinder radius="0.1" length="0.051"/> 
+            </geometry>
+        </collision> -->
+    </link>
+
+
+    <!-- /////////////////////// RIGHT DRIVE WHEEL LINK /////////////////////// -->
+
+    <joint name="right_drive_wheel_joint" type="continuous">
+        <parent link="chassis"/>
+        <child link="right_drive_wheel"/>
+        <origin xyz="0 -0.2375 -0.0695" rpy="0 0 ${pi/2}"/>
+        <axis xyz="1 0 0"/>
+    </joint>
+
+    <link name="right_drive_wheel">
+        <visual>
+            <geometry>
+                <mesh filename="package://main_system/mesh/Wheels_8_inches.stl"/>
+            </geometry>
+            <!-- <material name="black"/> -->
+        </visual>
+        <!-- <collision>
+            <origin xyz="0 0 0" rpy="0 -${pi/2} 0"/>
+            <geometry>
+                <cylinder radius="0.1" length="0.051"/> 
+            </geometry>
+        </collision> -->
+    </link>
+
+
+    <!-- /////////////////////// CASTER WHEEL LINK /////////////////////// -->
+
+    <!-- /////////////////////// CASTER BASE FRONT LEFT //////////////////-->
+    <joint name="caster_base_joint_fl" type="fixed">
+        <parent link="chassis"/>
+        <child link="caster_base_fl"/>
+        <origin xyz="0.24664 0.215 -0.1088" rpy="0 0 ${pi/2}"/> <!---0.1088-->
+        <axis xyz="0 0 -1"/>
+    </joint>
+
+    <link name="caster_base_fl">
+        <visual>
+            <geometry>
+                <mesh filename="package://main_system/mesh/caster_base.stl"/>
+            </geometry>
+            <material name="aluminium"/>
+        </visual>
+    </link>
+
+    <!-- /////////////////////// CASTER WHEEL FRONT LEFT //////////////////-->
+    <joint name="caster_wheel_joint_fl" type="continuous">
+        <parent link="caster_base_fl"/>
+        <child link="caster_wheel_fl"/>
+        <origin xyz="0 0.023 -0.037"/>
+        <axis xyz="-1 0 0"/>
+    </joint>
+
+    <link name="caster_wheel_fl">
+        <visual>
+            <geometry>
+                <mesh filename="package://main_system/mesh/2_inch_daster_wheel.dae"/>
+            </geometry>
+            <!-- <material name="gray"/> -->
+        </visual>
+    </link>
+
+<!-- /////////////////////// CASTER BASE FRONT RIGHT //////////////////-->
+    <joint name="caster_base_joint_fr" type="fixed">
+        <parent link="chassis"/>
+        <child link="caster_base_fr"/>
+        <origin xyz="0.24664 -0.215 -0.1088" rpy="0 0 ${pi/2}"/>
+        <axis xyz="0 0 -1"/>
+    </joint>
+
+    <link name="caster_base_fr">
+        <visual>
+            <geometry>
+                <mesh filename="package://main_system/mesh/caster_base.stl"/>
+            </geometry>
+            <material name="aluminium"/>
+        </visual>
+    </link>
+
+<!-- /////////////////////// CASTER WHEEL FRONT RIGHT //////////////////-->
+    <joint name="caster_wheel_joint_fr" type="continuous">
+        <parent link="caster_base_fr"/>
+        <child link="caster_wheel_fr"/>
+        <origin xyz="0 0.023 -0.037"/>
+        <axis xyz="1 0 0"/>
+    </joint>
+
+    <link name="caster_wheel_fr">
+        <visual>
+            <geometry>
+                <mesh filename="package://main_system/mesh/2_inch_daster_wheel.dae"/>
+            </geometry>
+            <!-- <material name="gray"/> -->
+        </visual>
+    </link>
+
+<!-- /////////////////////// CASTER BASE REAR LEFT //////////////////-->
+    <joint name="caster_base_joint_rl" type="fixed">
+        <parent link="chassis"/>
+        <child link="caster_base_rl"/>
+        <origin xyz="-0.24664 0.215 -0.1088" rpy="0 0 -${pi/2}"/>
+        <axis xyz="0 0 -1"/>
+    </joint>
+
+    <link name="caster_base_rl">
+        <visual>
+            <geometry>
+                <mesh filename="package://main_system/mesh/caster_base.stl"/>
+            </geometry>
+            <material name="aluminium"/>
+        </visual>
+    </link>
+
+<!-- /////////////////////// CASTER WHEEL REAR LEFT //////////////////-->
+    <joint name="caster_wheel_joint_rl" type="continuous">
+        <parent link="caster_base_rl"/>
+        <child link="caster_wheel_rl"/>
+        <origin xyz="0 0.023 -0.037"/>
+        <axis xyz="-1 0 0"/>
+    </joint>
+
+    <link name="caster_wheel_rl">
+        <visual>
+            <geometry>
+                <mesh filename="package://main_system/mesh/2_inch_daster_wheel.dae"/>
+            </geometry>
+            <!-- <material name="gray"/> -->
+        </visual>
+    </link>
+
+<!-- /////////////////////// CASTER BASE REAR RIGHT //////////////////-->
+    <joint name="caster_base_joint_rr" type="fixed">
+        <parent link="chassis"/>
+        <child link="caster_base_rr"/>
+        <origin xyz="-0.24664 -0.215 -0.1088" rpy="0 0 -${pi/2}"/>
+        <axis xyz="0 0 -1"/>
+    </joint>
+
+    <link name="caster_base_rr">
+        <visual>
+            <geometry>
+                <mesh filename="package://main_system/mesh/caster_base.stl"/>
+            </geometry>
+            <material name="aluminium"/>
+        </visual>
+    </link>
+
+<!-- /////////////////////// CASTER WHEEL REAR RIGHT //////////////////-->
+    <joint name="caster_wheel_joint_rr" type="continuous">
+        <parent link="caster_base_rr"/>
+        <child link="caster_wheel_rr"/>
+        <origin xyz="0 0.023 -0.037"/>
+        <axis xyz="1 0 0"/>
+    </joint>
+
+    <link name="caster_wheel_rr">
+        <visual>
+            <geometry>
+                <!-- <sphere radius="0.025"/> -->
+                <mesh filename="package://main_system/mesh/2_inch_daster_wheel.dae"/>
+            </geometry>
+            <!-- <material name="gray"/> -->
+        </visual>
+    </link>
+
+<!-- /////////////////////// LIDAR //////////////////-->
+    <joint name="lidar_base_joint" type="fixed">
+        <parent link="chassis"/>
+        <child link="lidar_base"/>
+        <origin xyz="0 0 0.0635" rpy="0 0 0"/>
+    </joint>
+
+    <link name="lidar_base">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://main_system/mesh/Lidar_base.stl"/>
+            </geometry>
+            <material name="black"/>
+        </visual>
+    </link>
+
+    
+
+</robot>

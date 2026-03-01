@@ -1,0 +1,412 @@
+[0.351s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--symlink-install']
+[0.351s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=True, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=4, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0xffffa6de37a0>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0xffffa6f37e60>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0xffffa6f37e60>>, mixin_verb=('build',))
+[0.448s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.448s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.448s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.448s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.448s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.448s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.448s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/nawako05/finalproject_ws'
+[0.448s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.448s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.449s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.449s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.449s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.449s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.449s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.449s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.449s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.506s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.506s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.506s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.506s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.506s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.506s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.506s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.506s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.506s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.507s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.507s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.507s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.507s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.507s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.507s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.507s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.507s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.507s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.507s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.507s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.507s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.507s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.507s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.508s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.508s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.508s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.508s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.508s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.508s] Level 1:colcon.colcon_core.package_identification:_identify(src/debugger) by extensions ['ignore', 'ignore_ament_install']
+[0.508s] Level 1:colcon.colcon_core.package_identification:_identify(src/debugger) by extension 'ignore'
+[0.508s] Level 1:colcon.colcon_core.package_identification:_identify(src/debugger) by extension 'ignore_ament_install'
+[0.508s] Level 1:colcon.colcon_core.package_identification:_identify(src/debugger) by extensions ['colcon_pkg']
+[0.508s] Level 1:colcon.colcon_core.package_identification:_identify(src/debugger) by extension 'colcon_pkg'
+[0.508s] Level 1:colcon.colcon_core.package_identification:_identify(src/debugger) by extensions ['colcon_meta']
+[0.508s] Level 1:colcon.colcon_core.package_identification:_identify(src/debugger) by extension 'colcon_meta'
+[0.508s] Level 1:colcon.colcon_core.package_identification:_identify(src/debugger) by extensions ['ros']
+[0.508s] Level 1:colcon.colcon_core.package_identification:_identify(src/debugger) by extension 'ros'
+[0.512s] DEBUG:colcon.colcon_core.package_identification:Package 'src/debugger' with type 'ros.ament_python' and name 'debugger'
+[0.513s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_processing) by extensions ['ignore', 'ignore_ament_install']
+[0.513s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_processing) by extension 'ignore'
+[0.513s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_processing) by extension 'ignore_ament_install'
+[0.513s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_processing) by extensions ['colcon_pkg']
+[0.513s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_processing) by extension 'colcon_pkg'
+[0.513s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_processing) by extensions ['colcon_meta']
+[0.513s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_processing) by extension 'colcon_meta'
+[0.513s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_processing) by extensions ['ros']
+[0.514s] Level 1:colcon.colcon_core.package_identification:_identify(src/image_processing) by extension 'ros'
+[0.515s] DEBUG:colcon.colcon_core.package_identification:Package 'src/image_processing' with type 'ros.ament_python' and name 'image_processing'
+[0.515s] Level 1:colcon.colcon_core.package_identification:_identify(src/main_control) by extensions ['ignore', 'ignore_ament_install']
+[0.515s] Level 1:colcon.colcon_core.package_identification:_identify(src/main_control) by extension 'ignore'
+[0.515s] Level 1:colcon.colcon_core.package_identification:_identify(src/main_control) by extension 'ignore_ament_install'
+[0.515s] Level 1:colcon.colcon_core.package_identification:_identify(src/main_control) by extensions ['colcon_pkg']
+[0.515s] Level 1:colcon.colcon_core.package_identification:_identify(src/main_control) by extension 'colcon_pkg'
+[0.515s] Level 1:colcon.colcon_core.package_identification:_identify(src/main_control) by extensions ['colcon_meta']
+[0.515s] Level 1:colcon.colcon_core.package_identification:_identify(src/main_control) by extension 'colcon_meta'
+[0.515s] Level 1:colcon.colcon_core.package_identification:_identify(src/main_control) by extensions ['ros']
+[0.515s] Level 1:colcon.colcon_core.package_identification:_identify(src/main_control) by extension 'ros'
+[0.516s] DEBUG:colcon.colcon_core.package_identification:Package 'src/main_control' with type 'ros.ament_python' and name 'main_control'
+[0.516s] Level 1:colcon.colcon_core.package_identification:_identify(src/main_system) by extensions ['ignore', 'ignore_ament_install']
+[0.516s] Level 1:colcon.colcon_core.package_identification:_identify(src/main_system) by extension 'ignore'
+[0.516s] Level 1:colcon.colcon_core.package_identification:_identify(src/main_system) by extension 'ignore_ament_install'
+[0.517s] Level 1:colcon.colcon_core.package_identification:_identify(src/main_system) by extensions ['colcon_pkg']
+[0.517s] Level 1:colcon.colcon_core.package_identification:_identify(src/main_system) by extension 'colcon_pkg'
+[0.517s] Level 1:colcon.colcon_core.package_identification:_identify(src/main_system) by extensions ['colcon_meta']
+[0.517s] Level 1:colcon.colcon_core.package_identification:_identify(src/main_system) by extension 'colcon_meta'
+[0.517s] Level 1:colcon.colcon_core.package_identification:_identify(src/main_system) by extensions ['ros']
+[0.517s] Level 1:colcon.colcon_core.package_identification:_identify(src/main_system) by extension 'ros'
+[0.518s] DEBUG:colcon.colcon_core.package_identification:Package 'src/main_system' with type 'ros.ament_cmake' and name 'main_system'
+[0.518s] Level 1:colcon.colcon_core.package_identification:_identify(src/manual_command) by extensions ['ignore', 'ignore_ament_install']
+[0.518s] Level 1:colcon.colcon_core.package_identification:_identify(src/manual_command) by extension 'ignore'
+[0.518s] Level 1:colcon.colcon_core.package_identification:_identify(src/manual_command) by extension 'ignore_ament_install'
+[0.518s] Level 1:colcon.colcon_core.package_identification:_identify(src/manual_command) by extensions ['colcon_pkg']
+[0.518s] Level 1:colcon.colcon_core.package_identification:_identify(src/manual_command) by extension 'colcon_pkg'
+[0.518s] Level 1:colcon.colcon_core.package_identification:_identify(src/manual_command) by extensions ['colcon_meta']
+[0.518s] Level 1:colcon.colcon_core.package_identification:_identify(src/manual_command) by extension 'colcon_meta'
+[0.518s] Level 1:colcon.colcon_core.package_identification:_identify(src/manual_command) by extensions ['ros']
+[0.518s] Level 1:colcon.colcon_core.package_identification:_identify(src/manual_command) by extension 'ros'
+[0.519s] DEBUG:colcon.colcon_core.package_identification:Package 'src/manual_command' with type 'ros.ament_python' and name 'manual_command'
+[0.519s] Level 1:colcon.colcon_core.package_identification:_identify(src/uart) by extensions ['ignore', 'ignore_ament_install']
+[0.520s] Level 1:colcon.colcon_core.package_identification:_identify(src/uart) by extension 'ignore'
+[0.520s] Level 1:colcon.colcon_core.package_identification:_identify(src/uart) by extension 'ignore_ament_install'
+[0.520s] Level 1:colcon.colcon_core.package_identification:_identify(src/uart) by extensions ['colcon_pkg']
+[0.520s] Level 1:colcon.colcon_core.package_identification:_identify(src/uart) by extension 'colcon_pkg'
+[0.520s] Level 1:colcon.colcon_core.package_identification:_identify(src/uart) by extensions ['colcon_meta']
+[0.520s] Level 1:colcon.colcon_core.package_identification:_identify(src/uart) by extension 'colcon_meta'
+[0.520s] Level 1:colcon.colcon_core.package_identification:_identify(src/uart) by extensions ['ros']
+[0.520s] Level 1:colcon.colcon_core.package_identification:_identify(src/uart) by extension 'ros'
+[0.521s] DEBUG:colcon.colcon_core.package_identification:Package 'src/uart' with type 'ros.ament_python' and name 'uart'
+[0.521s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.521s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.521s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.521s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.521s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.623s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.623s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.643s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 6 installed packages in /home/nawako05/finalproject_ws/install
+[0.656s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 365 installed packages in /home/nawako05/ros2_jazzy/install
+[0.660s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 302 installed packages in /opt/ros/jazzy
+[0.669s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.777s] Level 5:colcon.colcon_core.verb:set package 'debugger' build argument 'cmake_args' from command line to 'None'
+[0.777s] Level 5:colcon.colcon_core.verb:set package 'debugger' build argument 'cmake_target' from command line to 'None'
+[0.777s] Level 5:colcon.colcon_core.verb:set package 'debugger' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.777s] Level 5:colcon.colcon_core.verb:set package 'debugger' build argument 'cmake_clean_cache' from command line to 'False'
+[0.777s] Level 5:colcon.colcon_core.verb:set package 'debugger' build argument 'cmake_clean_first' from command line to 'False'
+[0.777s] Level 5:colcon.colcon_core.verb:set package 'debugger' build argument 'cmake_force_configure' from command line to 'False'
+[0.777s] Level 5:colcon.colcon_core.verb:set package 'debugger' build argument 'ament_cmake_args' from command line to 'None'
+[0.777s] Level 5:colcon.colcon_core.verb:set package 'debugger' build argument 'catkin_cmake_args' from command line to 'None'
+[0.777s] Level 5:colcon.colcon_core.verb:set package 'debugger' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.777s] DEBUG:colcon.colcon_core.verb:Building package 'debugger' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/nawako05/finalproject_ws/build/debugger', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/nawako05/finalproject_ws/install/debugger', 'merge_install': False, 'path': '/home/nawako05/finalproject_ws/src/debugger', 'symlink_install': True, 'test_result_base': None}
+[0.778s] Level 5:colcon.colcon_core.verb:set package 'image_processing' build argument 'cmake_args' from command line to 'None'
+[0.778s] Level 5:colcon.colcon_core.verb:set package 'image_processing' build argument 'cmake_target' from command line to 'None'
+[0.778s] Level 5:colcon.colcon_core.verb:set package 'image_processing' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.778s] Level 5:colcon.colcon_core.verb:set package 'image_processing' build argument 'cmake_clean_cache' from command line to 'False'
+[0.778s] Level 5:colcon.colcon_core.verb:set package 'image_processing' build argument 'cmake_clean_first' from command line to 'False'
+[0.778s] Level 5:colcon.colcon_core.verb:set package 'image_processing' build argument 'cmake_force_configure' from command line to 'False'
+[0.778s] Level 5:colcon.colcon_core.verb:set package 'image_processing' build argument 'ament_cmake_args' from command line to 'None'
+[0.778s] Level 5:colcon.colcon_core.verb:set package 'image_processing' build argument 'catkin_cmake_args' from command line to 'None'
+[0.778s] Level 5:colcon.colcon_core.verb:set package 'image_processing' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.778s] DEBUG:colcon.colcon_core.verb:Building package 'image_processing' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/nawako05/finalproject_ws/build/image_processing', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/nawako05/finalproject_ws/install/image_processing', 'merge_install': False, 'path': '/home/nawako05/finalproject_ws/src/image_processing', 'symlink_install': True, 'test_result_base': None}
+[0.778s] Level 5:colcon.colcon_core.verb:set package 'main_control' build argument 'cmake_args' from command line to 'None'
+[0.778s] Level 5:colcon.colcon_core.verb:set package 'main_control' build argument 'cmake_target' from command line to 'None'
+[0.778s] Level 5:colcon.colcon_core.verb:set package 'main_control' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.778s] Level 5:colcon.colcon_core.verb:set package 'main_control' build argument 'cmake_clean_cache' from command line to 'False'
+[0.779s] Level 5:colcon.colcon_core.verb:set package 'main_control' build argument 'cmake_clean_first' from command line to 'False'
+[0.779s] Level 5:colcon.colcon_core.verb:set package 'main_control' build argument 'cmake_force_configure' from command line to 'False'
+[0.779s] Level 5:colcon.colcon_core.verb:set package 'main_control' build argument 'ament_cmake_args' from command line to 'None'
+[0.779s] Level 5:colcon.colcon_core.verb:set package 'main_control' build argument 'catkin_cmake_args' from command line to 'None'
+[0.779s] Level 5:colcon.colcon_core.verb:set package 'main_control' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.779s] DEBUG:colcon.colcon_core.verb:Building package 'main_control' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/nawako05/finalproject_ws/build/main_control', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/nawako05/finalproject_ws/install/main_control', 'merge_install': False, 'path': '/home/nawako05/finalproject_ws/src/main_control', 'symlink_install': True, 'test_result_base': None}
+[0.779s] Level 5:colcon.colcon_core.verb:set package 'main_system' build argument 'cmake_args' from command line to 'None'
+[0.779s] Level 5:colcon.colcon_core.verb:set package 'main_system' build argument 'cmake_target' from command line to 'None'
+[0.779s] Level 5:colcon.colcon_core.verb:set package 'main_system' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.779s] Level 5:colcon.colcon_core.verb:set package 'main_system' build argument 'cmake_clean_cache' from command line to 'False'
+[0.779s] Level 5:colcon.colcon_core.verb:set package 'main_system' build argument 'cmake_clean_first' from command line to 'False'
+[0.779s] Level 5:colcon.colcon_core.verb:set package 'main_system' build argument 'cmake_force_configure' from command line to 'False'
+[0.779s] Level 5:colcon.colcon_core.verb:set package 'main_system' build argument 'ament_cmake_args' from command line to 'None'
+[0.779s] Level 5:colcon.colcon_core.verb:set package 'main_system' build argument 'catkin_cmake_args' from command line to 'None'
+[0.779s] Level 5:colcon.colcon_core.verb:set package 'main_system' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.779s] DEBUG:colcon.colcon_core.verb:Building package 'main_system' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/nawako05/finalproject_ws/build/main_system', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/nawako05/finalproject_ws/install/main_system', 'merge_install': False, 'path': '/home/nawako05/finalproject_ws/src/main_system', 'symlink_install': True, 'test_result_base': None}
+[0.780s] Level 5:colcon.colcon_core.verb:set package 'manual_command' build argument 'cmake_args' from command line to 'None'
+[0.780s] Level 5:colcon.colcon_core.verb:set package 'manual_command' build argument 'cmake_target' from command line to 'None'
+[0.780s] Level 5:colcon.colcon_core.verb:set package 'manual_command' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.780s] Level 5:colcon.colcon_core.verb:set package 'manual_command' build argument 'cmake_clean_cache' from command line to 'False'
+[0.780s] Level 5:colcon.colcon_core.verb:set package 'manual_command' build argument 'cmake_clean_first' from command line to 'False'
+[0.780s] Level 5:colcon.colcon_core.verb:set package 'manual_command' build argument 'cmake_force_configure' from command line to 'False'
+[0.780s] Level 5:colcon.colcon_core.verb:set package 'manual_command' build argument 'ament_cmake_args' from command line to 'None'
+[0.780s] Level 5:colcon.colcon_core.verb:set package 'manual_command' build argument 'catkin_cmake_args' from command line to 'None'
+[0.780s] Level 5:colcon.colcon_core.verb:set package 'manual_command' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.780s] DEBUG:colcon.colcon_core.verb:Building package 'manual_command' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/nawako05/finalproject_ws/build/manual_command', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/nawako05/finalproject_ws/install/manual_command', 'merge_install': False, 'path': '/home/nawako05/finalproject_ws/src/manual_command', 'symlink_install': True, 'test_result_base': None}
+[0.780s] Level 5:colcon.colcon_core.verb:set package 'uart' build argument 'cmake_args' from command line to 'None'
+[0.780s] Level 5:colcon.colcon_core.verb:set package 'uart' build argument 'cmake_target' from command line to 'None'
+[0.780s] Level 5:colcon.colcon_core.verb:set package 'uart' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.780s] Level 5:colcon.colcon_core.verb:set package 'uart' build argument 'cmake_clean_cache' from command line to 'False'
+[0.780s] Level 5:colcon.colcon_core.verb:set package 'uart' build argument 'cmake_clean_first' from command line to 'False'
+[0.780s] Level 5:colcon.colcon_core.verb:set package 'uart' build argument 'cmake_force_configure' from command line to 'False'
+[0.780s] Level 5:colcon.colcon_core.verb:set package 'uart' build argument 'ament_cmake_args' from command line to 'None'
+[0.780s] Level 5:colcon.colcon_core.verb:set package 'uart' build argument 'catkin_cmake_args' from command line to 'None'
+[0.780s] Level 5:colcon.colcon_core.verb:set package 'uart' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.780s] DEBUG:colcon.colcon_core.verb:Building package 'uart' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/nawako05/finalproject_ws/build/uart', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/nawako05/finalproject_ws/install/uart', 'merge_install': False, 'path': '/home/nawako05/finalproject_ws/src/uart', 'symlink_install': True, 'test_result_base': None}
+[0.781s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.782s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.783s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/nawako05/finalproject_ws/src/debugger' with build type 'ament_python'
+[0.783s] Level 1:colcon.colcon_core.shell:create_environment_hook('debugger', 'ament_prefix_path')
+[0.792s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.793s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nawako05/finalproject_ws/install/debugger/share/debugger/hook/ament_prefix_path.ps1'
+[0.794s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nawako05/finalproject_ws/install/debugger/share/debugger/hook/ament_prefix_path.dsv'
+[0.796s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nawako05/finalproject_ws/install/debugger/share/debugger/hook/ament_prefix_path.sh'
+[0.798s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.798s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.838s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/nawako05/finalproject_ws/src/image_processing' with build type 'ament_python'
+[0.838s] Level 1:colcon.colcon_core.shell:create_environment_hook('image_processing', 'ament_prefix_path')
+[0.838s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nawako05/finalproject_ws/install/image_processing/share/image_processing/hook/ament_prefix_path.ps1'
+[0.839s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nawako05/finalproject_ws/install/image_processing/share/image_processing/hook/ament_prefix_path.dsv'
+[0.840s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nawako05/finalproject_ws/install/image_processing/share/image_processing/hook/ament_prefix_path.sh'
+[0.841s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.841s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.878s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/nawako05/finalproject_ws/src/main_control' with build type 'ament_python'
+[0.879s] Level 1:colcon.colcon_core.shell:create_environment_hook('main_control', 'ament_prefix_path')
+[0.879s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nawako05/finalproject_ws/install/main_control/share/main_control/hook/ament_prefix_path.ps1'
+[0.880s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nawako05/finalproject_ws/install/main_control/share/main_control/hook/ament_prefix_path.dsv'
+[0.881s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nawako05/finalproject_ws/install/main_control/share/main_control/hook/ament_prefix_path.sh'
+[0.882s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.883s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.922s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/nawako05/finalproject_ws/src/main_system' with build type 'ament_cmake'
+[0.923s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/nawako05/finalproject_ws/src/main_system'
+[0.923s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.923s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.833s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/nawako05/finalproject_ws/src/image_processing'
+[1.833s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.833s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[2.770s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/nawako05/finalproject_ws/src/debugger'
+[2.771s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[2.771s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[3.671s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/nawako05/finalproject_ws/src/main_control'
+[3.671s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[3.671s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[3.723s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/nawako05/finalproject_ws/build/main_system': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nawako05/finalproject_ws/install/uart:/home/nawako05/finalproject_ws/install/manual_command:/home/nawako05/finalproject_ws/install/main_control:/home/nawako05/finalproject_ws/install/image_processing:/home/nawako05/finalproject_ws/install/debugger:/opt/ros/jazzy:/home/nawako05/ros2_jazzy/install/rqt_bag_plugins:/home/nawako05/ros2_jazzy/install/launch_testing_examples:/home/nawako05/ros2_jazzy/install/ros2bag:/home/nawako05/ros2_jazzy/install/rqt_bag:/home/nawako05/ros2_jazzy/install/rosbag2_examples_py:/home/nawako05/ros2_jazzy/install/tracetools_test:/home/nawako05/ros2_jazzy/install/tracetools_launch:/home/nawako05/ros2_jazzy/install/topic_monitor:/home/nawako05/ros2_jazzy/install/tf2_tools:/home/nawako05/ros2_jazzy/install/examples_tf2_py:/home/nawako05/ros2_jazzy/install/tf2_ros_py:/home/nawako05/ros2_jazzy/install/examples_rclpy_pointcloud_publisher:/home/nawako05/ros2_jazzy/install/sensor_msgs_py:/home/nawako05/ros2_jazzy/install/quality_of_service_demo_py:/home/nawako05/ros2_jazzy/install/camera_info_manager_py:/home/nawako05/ros2_jazzy/install/rqt_plot:/home/nawako05/ros2_jazzy/install/ros2doctor:/home/nawako05/ros2_jazzy/install/lifecycle_py:/home/nawako05/ros2_jazzy/install/examples_rclpy_minimal_subscriber:/home/nawako05/ros2_jazzy/install/examples_rclpy_minimal_service:/home/nawako05/ros2_jazzy/install/examples_rclpy_minimal_publisher:/home/nawako05/ros2_jazzy/install/examples_rclpy_minimal_client:/home/nawako05/ros2_jazzy/install/examples_rclpy_executors:/home/nawako05/ros2_jazzy/install/demo_nodes_py:/home/nawako05/ros2_jazzy/install/rqt:/home/nawako05/ros2_jazzy/install/ros2component:/home/nawako05/ros2_jazzy/install/sros2:/home/nawako05/ros2_jazzy/install/rqt_topic:/home/nawako05/ros2_jazzy/install/rqt_srv:/home/nawako05/ros2_jazzy/install/rqt_shell:/home/nawako05/ros2_jazzy/install/rqt_service_caller:/home/nawako05/ros2_jazzy/install/rqt_reconfigure:/home/nawako05/ros2_jazzy/install/rqt_py_console:/home/nawako05/ros2_jazzy/install/rqt_publisher:/home/nawako05/ros2_jazzy/install/rqt_action:/home/nawako05/ros2_jazzy/install/rqt_msg:/home/nawako05/ros2_jazzy/install/rqt_console:/home/nawako05/ros2_jazzy/install/rqt_graph:/home/nawako05/ros2_jazzy/install/rqt_gui_py:/home/nawako05/ros2_jazzy/install/rqt_gui:/home/nawako05/ros2_jazzy/install/ros2trace:/home/nawako05/ros2_jazzy/install/ros2param:/home/nawako05/ros2_jazzy/install/ros2lifecycle:/home/nawako05/ros2_jazzy/install/ros2service:/home/nawako05/ros2_jazzy/install/ros2topic:/home/nawako05/ros2_jazzy/install/ros2test:/home/nawako05/ros2_jazzy/install/ros2run:/home/nawako05/ros2_jazzy/install/ros2plugin:/home/nawako05/ros2_jazzy/install/ros2launch:/home/nawako05/ros2_jazzy/install/ros2pkg:/home/nawako05/ros2_jazzy/install/ros2node:/home/nawako05/ros2_jazzy/install/ros2multicast:/home/nawako05/ros2_jazzy/install/ros2interface:/home/nawako05/ros2_jazzy/install/ros2action:/home/nawako05/ros2_jazzy/install/ros2cli:/home/nawako05/ros2_jazzy/install/launch_testing_ros:/home/nawako05/ros2_jazzy/install/launch_ros:/home/nawako05/ros2_jazzy/install/examples_rclpy_minimal_action_server:/home/nawako05/ros2_jazzy/install/examples_rclpy_minimal_action_client:/home/nawako05/ros2_jazzy/install/examples_rclpy_guard_conditions:/home/nawako05/ros2_jazzy/install/action_tutorials_py:/home/nawako05/ros2_jazzy/install/ament_uncrustify:/home/nawako05/ros2_jazzy/install/tracetools_trace:/home/nawako05/ros2_jazzy/install/tracetools_read:/home/nawako05/ros2_jazzy/install/test_tracetools_launch:/home/nawako05/ros2_jazzy/install/test_ros2trace:/home/nawako05/ros2_jazzy/install/test_launch_ros:/home/nawako05/ros2_jazzy/install/rpyutils:/home/nawako05/ros2_jazzy/install/rosidl_runtime_py:/home/nawako05/ros2_jazzy/install/rosidl_pycommon:/home/nawako05/ros2_jazzy/install/rosidl_cli:/home/nawako05/ros2_jazzy/install/launch_pytest:/home/nawako05/ros2_jazzy/install/launch_testing:/home/nawako05/ros2_jazzy/install/launch_yaml:/home/nawako05/ros2_jazzy/install/launch_xml:/home/nawako05/ros2_jazzy/install/launch:/home/nawako05/ros2_jazzy/install/osrf_pycommon:/home/nawako05/ros2_jazzy/install/domain_coordinator:/home/nawako05/ros2_jazzy/install/ament_xmllint:/home/nawako05/ros2_jazzy/install/ament_pyflakes:/home/nawako05/ros2_jazzy/install/ament_pycodestyle:/home/nawako05/ros2_jazzy/install/ament_pep257:/home/nawako05/ros2_jazzy/install/ament_pclint:/home/nawako05/ros2_jazzy/install/ament_package:/home/nawako05/ros2_jazzy/install/ament_mypy:/home/nawako05/ros2_jazzy/install/ament_lint_cmake:/home/nawako05/ros2_jazzy/install/ament_flake8:/home/nawako05/ros2_jazzy/install/ament_copyright:/home/nawako05/ros2_jazzy/install/ament_lint:/home/nawako05/ros2_jazzy/install/ament_index_python:/home/nawako05/ros2_jazzy/install/ament_cpplint:/home/nawako05/ros2_jazzy/install/ament_cppcheck:/home/nawako05/ros2_jazzy/install/ament_clang_tidy:/home/nawako05/ros2_jazzy/install/ament_clang_format /usr/bin/cmake --build /home/nawako05/finalproject_ws/build/main_system -- -j4 -l4
+[3.987s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/nawako05/finalproject_ws/build/main_system' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nawako05/finalproject_ws/install/uart:/home/nawako05/finalproject_ws/install/manual_command:/home/nawako05/finalproject_ws/install/main_control:/home/nawako05/finalproject_ws/install/image_processing:/home/nawako05/finalproject_ws/install/debugger:/opt/ros/jazzy:/home/nawako05/ros2_jazzy/install/rqt_bag_plugins:/home/nawako05/ros2_jazzy/install/launch_testing_examples:/home/nawako05/ros2_jazzy/install/ros2bag:/home/nawako05/ros2_jazzy/install/rqt_bag:/home/nawako05/ros2_jazzy/install/rosbag2_examples_py:/home/nawako05/ros2_jazzy/install/tracetools_test:/home/nawako05/ros2_jazzy/install/tracetools_launch:/home/nawako05/ros2_jazzy/install/topic_monitor:/home/nawako05/ros2_jazzy/install/tf2_tools:/home/nawako05/ros2_jazzy/install/examples_tf2_py:/home/nawako05/ros2_jazzy/install/tf2_ros_py:/home/nawako05/ros2_jazzy/install/examples_rclpy_pointcloud_publisher:/home/nawako05/ros2_jazzy/install/sensor_msgs_py:/home/nawako05/ros2_jazzy/install/quality_of_service_demo_py:/home/nawako05/ros2_jazzy/install/camera_info_manager_py:/home/nawako05/ros2_jazzy/install/rqt_plot:/home/nawako05/ros2_jazzy/install/ros2doctor:/home/nawako05/ros2_jazzy/install/lifecycle_py:/home/nawako05/ros2_jazzy/install/examples_rclpy_minimal_subscriber:/home/nawako05/ros2_jazzy/install/examples_rclpy_minimal_service:/home/nawako05/ros2_jazzy/install/examples_rclpy_minimal_publisher:/home/nawako05/ros2_jazzy/install/examples_rclpy_minimal_client:/home/nawako05/ros2_jazzy/install/examples_rclpy_executors:/home/nawako05/ros2_jazzy/install/demo_nodes_py:/home/nawako05/ros2_jazzy/install/rqt:/home/nawako05/ros2_jazzy/install/ros2component:/home/nawako05/ros2_jazzy/install/sros2:/home/nawako05/ros2_jazzy/install/rqt_topic:/home/nawako05/ros2_jazzy/install/rqt_srv:/home/nawako05/ros2_jazzy/install/rqt_shell:/home/nawako05/ros2_jazzy/install/rqt_service_caller:/home/nawako05/ros2_jazzy/install/rqt_reconfigure:/home/nawako05/ros2_jazzy/install/rqt_py_console:/home/nawako05/ros2_jazzy/install/rqt_publisher:/home/nawako05/ros2_jazzy/install/rqt_action:/home/nawako05/ros2_jazzy/install/rqt_msg:/home/nawako05/ros2_jazzy/install/rqt_console:/home/nawako05/ros2_jazzy/install/rqt_graph:/home/nawako05/ros2_jazzy/install/rqt_gui_py:/home/nawako05/ros2_jazzy/install/rqt_gui:/home/nawako05/ros2_jazzy/install/ros2trace:/home/nawako05/ros2_jazzy/install/ros2param:/home/nawako05/ros2_jazzy/install/ros2lifecycle:/home/nawako05/ros2_jazzy/install/ros2service:/home/nawako05/ros2_jazzy/install/ros2topic:/home/nawako05/ros2_jazzy/install/ros2test:/home/nawako05/ros2_jazzy/install/ros2run:/home/nawako05/ros2_jazzy/install/ros2plugin:/home/nawako05/ros2_jazzy/install/ros2launch:/home/nawako05/ros2_jazzy/install/ros2pkg:/home/nawako05/ros2_jazzy/install/ros2node:/home/nawako05/ros2_jazzy/install/ros2multicast:/home/nawako05/ros2_jazzy/install/ros2interface:/home/nawako05/ros2_jazzy/install/ros2action:/home/nawako05/ros2_jazzy/install/ros2cli:/home/nawako05/ros2_jazzy/install/launch_testing_ros:/home/nawako05/ros2_jazzy/install/launch_ros:/home/nawako05/ros2_jazzy/install/examples_rclpy_minimal_action_server:/home/nawako05/ros2_jazzy/install/examples_rclpy_minimal_action_client:/home/nawako05/ros2_jazzy/install/examples_rclpy_guard_conditions:/home/nawako05/ros2_jazzy/install/action_tutorials_py:/home/nawako05/ros2_jazzy/install/ament_uncrustify:/home/nawako05/ros2_jazzy/install/tracetools_trace:/home/nawako05/ros2_jazzy/install/tracetools_read:/home/nawako05/ros2_jazzy/install/test_tracetools_launch:/home/nawako05/ros2_jazzy/install/test_ros2trace:/home/nawako05/ros2_jazzy/install/test_launch_ros:/home/nawako05/ros2_jazzy/install/rpyutils:/home/nawako05/ros2_jazzy/install/rosidl_runtime_py:/home/nawako05/ros2_jazzy/install/rosidl_pycommon:/home/nawako05/ros2_jazzy/install/rosidl_cli:/home/nawako05/ros2_jazzy/install/launch_pytest:/home/nawako05/ros2_jazzy/install/launch_testing:/home/nawako05/ros2_jazzy/install/launch_yaml:/home/nawako05/ros2_jazzy/install/launch_xml:/home/nawako05/ros2_jazzy/install/launch:/home/nawako05/ros2_jazzy/install/osrf_pycommon:/home/nawako05/ros2_jazzy/install/domain_coordinator:/home/nawako05/ros2_jazzy/install/ament_xmllint:/home/nawako05/ros2_jazzy/install/ament_pyflakes:/home/nawako05/ros2_jazzy/install/ament_pycodestyle:/home/nawako05/ros2_jazzy/install/ament_pep257:/home/nawako05/ros2_jazzy/install/ament_pclint:/home/nawako05/ros2_jazzy/install/ament_package:/home/nawako05/ros2_jazzy/install/ament_mypy:/home/nawako05/ros2_jazzy/install/ament_lint_cmake:/home/nawako05/ros2_jazzy/install/ament_flake8:/home/nawako05/ros2_jazzy/install/ament_copyright:/home/nawako05/ros2_jazzy/install/ament_lint:/home/nawako05/ros2_jazzy/install/ament_index_python:/home/nawako05/ros2_jazzy/install/ament_cpplint:/home/nawako05/ros2_jazzy/install/ament_cppcheck:/home/nawako05/ros2_jazzy/install/ament_clang_tidy:/home/nawako05/ros2_jazzy/install/ament_clang_format /usr/bin/cmake --build /home/nawako05/finalproject_ws/build/main_system -- -j4 -l4
+[4.076s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/nawako05/finalproject_ws/build/main_system': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nawako05/finalproject_ws/install/uart:/home/nawako05/finalproject_ws/install/manual_command:/home/nawako05/finalproject_ws/install/main_control:/home/nawako05/finalproject_ws/install/image_processing:/home/nawako05/finalproject_ws/install/debugger:/opt/ros/jazzy:/home/nawako05/ros2_jazzy/install/rqt_bag_plugins:/home/nawako05/ros2_jazzy/install/launch_testing_examples:/home/nawako05/ros2_jazzy/install/ros2bag:/home/nawako05/ros2_jazzy/install/rqt_bag:/home/nawako05/ros2_jazzy/install/rosbag2_examples_py:/home/nawako05/ros2_jazzy/install/tracetools_test:/home/nawako05/ros2_jazzy/install/tracetools_launch:/home/nawako05/ros2_jazzy/install/topic_monitor:/home/nawako05/ros2_jazzy/install/tf2_tools:/home/nawako05/ros2_jazzy/install/examples_tf2_py:/home/nawako05/ros2_jazzy/install/tf2_ros_py:/home/nawako05/ros2_jazzy/install/examples_rclpy_pointcloud_publisher:/home/nawako05/ros2_jazzy/install/sensor_msgs_py:/home/nawako05/ros2_jazzy/install/quality_of_service_demo_py:/home/nawako05/ros2_jazzy/install/camera_info_manager_py:/home/nawako05/ros2_jazzy/install/rqt_plot:/home/nawako05/ros2_jazzy/install/ros2doctor:/home/nawako05/ros2_jazzy/install/lifecycle_py:/home/nawako05/ros2_jazzy/install/examples_rclpy_minimal_subscriber:/home/nawako05/ros2_jazzy/install/examples_rclpy_minimal_service:/home/nawako05/ros2_jazzy/install/examples_rclpy_minimal_publisher:/home/nawako05/ros2_jazzy/install/examples_rclpy_minimal_client:/home/nawako05/ros2_jazzy/install/examples_rclpy_executors:/home/nawako05/ros2_jazzy/install/demo_nodes_py:/home/nawako05/ros2_jazzy/install/rqt:/home/nawako05/ros2_jazzy/install/ros2component:/home/nawako05/ros2_jazzy/install/sros2:/home/nawako05/ros2_jazzy/install/rqt_topic:/home/nawako05/ros2_jazzy/install/rqt_srv:/home/nawako05/ros2_jazzy/install/rqt_shell:/home/nawako05/ros2_jazzy/install/rqt_service_caller:/home/nawako05/ros2_jazzy/install/rqt_reconfigure:/home/nawako05/ros2_jazzy/install/rqt_py_console:/home/nawako05/ros2_jazzy/install/rqt_publisher:/home/nawako05/ros2_jazzy/install/rqt_action:/home/nawako05/ros2_jazzy/install/rqt_msg:/home/nawako05/ros2_jazzy/install/rqt_console:/home/nawako05/ros2_jazzy/install/rqt_graph:/home/nawako05/ros2_jazzy/install/rqt_gui_py:/home/nawako05/ros2_jazzy/install/rqt_gui:/home/nawako05/ros2_jazzy/install/ros2trace:/home/nawako05/ros2_jazzy/install/ros2param:/home/nawako05/ros2_jazzy/install/ros2lifecycle:/home/nawako05/ros2_jazzy/install/ros2service:/home/nawako05/ros2_jazzy/install/ros2topic:/home/nawako05/ros2_jazzy/install/ros2test:/home/nawako05/ros2_jazzy/install/ros2run:/home/nawako05/ros2_jazzy/install/ros2plugin:/home/nawako05/ros2_jazzy/install/ros2launch:/home/nawako05/ros2_jazzy/install/ros2pkg:/home/nawako05/ros2_jazzy/install/ros2node:/home/nawako05/ros2_jazzy/install/ros2multicast:/home/nawako05/ros2_jazzy/install/ros2interface:/home/nawako05/ros2_jazzy/install/ros2action:/home/nawako05/ros2_jazzy/install/ros2cli:/home/nawako05/ros2_jazzy/install/launch_testing_ros:/home/nawako05/ros2_jazzy/install/launch_ros:/home/nawako05/ros2_jazzy/install/examples_rclpy_minimal_action_server:/home/nawako05/ros2_jazzy/install/examples_rclpy_minimal_action_client:/home/nawako05/ros2_jazzy/install/examples_rclpy_guard_conditions:/home/nawako05/ros2_jazzy/install/action_tutorials_py:/home/nawako05/ros2_jazzy/install/ament_uncrustify:/home/nawako05/ros2_jazzy/install/tracetools_trace:/home/nawako05/ros2_jazzy/install/tracetools_read:/home/nawako05/ros2_jazzy/install/test_tracetools_launch:/home/nawako05/ros2_jazzy/install/test_ros2trace:/home/nawako05/ros2_jazzy/install/test_launch_ros:/home/nawako05/ros2_jazzy/install/rpyutils:/home/nawako05/ros2_jazzy/install/rosidl_runtime_py:/home/nawako05/ros2_jazzy/install/rosidl_pycommon:/home/nawako05/ros2_jazzy/install/rosidl_cli:/home/nawako05/ros2_jazzy/install/launch_pytest:/home/nawako05/ros2_jazzy/install/launch_testing:/home/nawako05/ros2_jazzy/install/launch_yaml:/home/nawako05/ros2_jazzy/install/launch_xml:/home/nawako05/ros2_jazzy/install/launch:/home/nawako05/ros2_jazzy/install/osrf_pycommon:/home/nawako05/ros2_jazzy/install/domain_coordinator:/home/nawako05/ros2_jazzy/install/ament_xmllint:/home/nawako05/ros2_jazzy/install/ament_pyflakes:/home/nawako05/ros2_jazzy/install/ament_pycodestyle:/home/nawako05/ros2_jazzy/install/ament_pep257:/home/nawako05/ros2_jazzy/install/ament_pclint:/home/nawako05/ros2_jazzy/install/ament_package:/home/nawako05/ros2_jazzy/install/ament_mypy:/home/nawako05/ros2_jazzy/install/ament_lint_cmake:/home/nawako05/ros2_jazzy/install/ament_flake8:/home/nawako05/ros2_jazzy/install/ament_copyright:/home/nawako05/ros2_jazzy/install/ament_lint:/home/nawako05/ros2_jazzy/install/ament_index_python:/home/nawako05/ros2_jazzy/install/ament_cpplint:/home/nawako05/ros2_jazzy/install/ament_cppcheck:/home/nawako05/ros2_jazzy/install/ament_clang_tidy:/home/nawako05/ros2_jazzy/install/ament_clang_format /usr/bin/cmake --install /home/nawako05/finalproject_ws/build/main_system
+[4.213s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(main_system)
+[4.214s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/nawako05/finalproject_ws/build/main_system' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nawako05/finalproject_ws/install/uart:/home/nawako05/finalproject_ws/install/manual_command:/home/nawako05/finalproject_ws/install/main_control:/home/nawako05/finalproject_ws/install/image_processing:/home/nawako05/finalproject_ws/install/debugger:/opt/ros/jazzy:/home/nawako05/ros2_jazzy/install/rqt_bag_plugins:/home/nawako05/ros2_jazzy/install/launch_testing_examples:/home/nawako05/ros2_jazzy/install/ros2bag:/home/nawako05/ros2_jazzy/install/rqt_bag:/home/nawako05/ros2_jazzy/install/rosbag2_examples_py:/home/nawako05/ros2_jazzy/install/tracetools_test:/home/nawako05/ros2_jazzy/install/tracetools_launch:/home/nawako05/ros2_jazzy/install/topic_monitor:/home/nawako05/ros2_jazzy/install/tf2_tools:/home/nawako05/ros2_jazzy/install/examples_tf2_py:/home/nawako05/ros2_jazzy/install/tf2_ros_py:/home/nawako05/ros2_jazzy/install/examples_rclpy_pointcloud_publisher:/home/nawako05/ros2_jazzy/install/sensor_msgs_py:/home/nawako05/ros2_jazzy/install/quality_of_service_demo_py:/home/nawako05/ros2_jazzy/install/camera_info_manager_py:/home/nawako05/ros2_jazzy/install/rqt_plot:/home/nawako05/ros2_jazzy/install/ros2doctor:/home/nawako05/ros2_jazzy/install/lifecycle_py:/home/nawako05/ros2_jazzy/install/examples_rclpy_minimal_subscriber:/home/nawako05/ros2_jazzy/install/examples_rclpy_minimal_service:/home/nawako05/ros2_jazzy/install/examples_rclpy_minimal_publisher:/home/nawako05/ros2_jazzy/install/examples_rclpy_minimal_client:/home/nawako05/ros2_jazzy/install/examples_rclpy_executors:/home/nawako05/ros2_jazzy/install/demo_nodes_py:/home/nawako05/ros2_jazzy/install/rqt:/home/nawako05/ros2_jazzy/install/ros2component:/home/nawako05/ros2_jazzy/install/sros2:/home/nawako05/ros2_jazzy/install/rqt_topic:/home/nawako05/ros2_jazzy/install/rqt_srv:/home/nawako05/ros2_jazzy/install/rqt_shell:/home/nawako05/ros2_jazzy/install/rqt_service_caller:/home/nawako05/ros2_jazzy/install/rqt_reconfigure:/home/nawako05/ros2_jazzy/install/rqt_py_console:/home/nawako05/ros2_jazzy/install/rqt_publisher:/home/nawako05/ros2_jazzy/install/rqt_action:/home/nawako05/ros2_jazzy/install/rqt_msg:/home/nawako05/ros2_jazzy/install/rqt_console:/home/nawako05/ros2_jazzy/install/rqt_graph:/home/nawako05/ros2_jazzy/install/rqt_gui_py:/home/nawako05/ros2_jazzy/install/rqt_gui:/home/nawako05/ros2_jazzy/install/ros2trace:/home/nawako05/ros2_jazzy/install/ros2param:/home/nawako05/ros2_jazzy/install/ros2lifecycle:/home/nawako05/ros2_jazzy/install/ros2service:/home/nawako05/ros2_jazzy/install/ros2topic:/home/nawako05/ros2_jazzy/install/ros2test:/home/nawako05/ros2_jazzy/install/ros2run:/home/nawako05/ros2_jazzy/install/ros2plugin:/home/nawako05/ros2_jazzy/install/ros2launch:/home/nawako05/ros2_jazzy/install/ros2pkg:/home/nawako05/ros2_jazzy/install/ros2node:/home/nawako05/ros2_jazzy/install/ros2multicast:/home/nawako05/ros2_jazzy/install/ros2interface:/home/nawako05/ros2_jazzy/install/ros2action:/home/nawako05/ros2_jazzy/install/ros2cli:/home/nawako05/ros2_jazzy/install/launch_testing_ros:/home/nawako05/ros2_jazzy/install/launch_ros:/home/nawako05/ros2_jazzy/install/examples_rclpy_minimal_action_server:/home/nawako05/ros2_jazzy/install/examples_rclpy_minimal_action_client:/home/nawako05/ros2_jazzy/install/examples_rclpy_guard_conditions:/home/nawako05/ros2_jazzy/install/action_tutorials_py:/home/nawako05/ros2_jazzy/install/ament_uncrustify:/home/nawako05/ros2_jazzy/install/tracetools_trace:/home/nawako05/ros2_jazzy/install/tracetools_read:/home/nawako05/ros2_jazzy/install/test_tracetools_launch:/home/nawako05/ros2_jazzy/install/test_ros2trace:/home/nawako05/ros2_jazzy/install/test_launch_ros:/home/nawako05/ros2_jazzy/install/rpyutils:/home/nawako05/ros2_jazzy/install/rosidl_runtime_py:/home/nawako05/ros2_jazzy/install/rosidl_pycommon:/home/nawako05/ros2_jazzy/install/rosidl_cli:/home/nawako05/ros2_jazzy/install/launch_pytest:/home/nawako05/ros2_jazzy/install/launch_testing:/home/nawako05/ros2_jazzy/install/launch_yaml:/home/nawako05/ros2_jazzy/install/launch_xml:/home/nawako05/ros2_jazzy/install/launch:/home/nawako05/ros2_jazzy/install/osrf_pycommon:/home/nawako05/ros2_jazzy/install/domain_coordinator:/home/nawako05/ros2_jazzy/install/ament_xmllint:/home/nawako05/ros2_jazzy/install/ament_pyflakes:/home/nawako05/ros2_jazzy/install/ament_pycodestyle:/home/nawako05/ros2_jazzy/install/ament_pep257:/home/nawako05/ros2_jazzy/install/ament_pclint:/home/nawako05/ros2_jazzy/install/ament_package:/home/nawako05/ros2_jazzy/install/ament_mypy:/home/nawako05/ros2_jazzy/install/ament_lint_cmake:/home/nawako05/ros2_jazzy/install/ament_flake8:/home/nawako05/ros2_jazzy/install/ament_copyright:/home/nawako05/ros2_jazzy/install/ament_lint:/home/nawako05/ros2_jazzy/install/ament_index_python:/home/nawako05/ros2_jazzy/install/ament_cpplint:/home/nawako05/ros2_jazzy/install/ament_cppcheck:/home/nawako05/ros2_jazzy/install/ament_clang_tidy:/home/nawako05/ros2_jazzy/install/ament_clang_format /usr/bin/cmake --install /home/nawako05/finalproject_ws/build/main_system
+[4.227s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/main_system' for CMake module files
+[4.228s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/main_system' for CMake config files
+[4.228s] Level 1:colcon.colcon_core.shell:create_environment_hook('main_system', 'cmake_prefix_path')
+[4.229s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nawako05/finalproject_ws/install/main_system/share/main_system/hook/cmake_prefix_path.ps1'
+[4.230s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nawako05/finalproject_ws/install/main_system/share/main_system/hook/cmake_prefix_path.dsv'
+[4.231s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nawako05/finalproject_ws/install/main_system/share/main_system/hook/cmake_prefix_path.sh'
+[4.232s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/main_system/bin'
+[4.232s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/main_system/lib/pkgconfig/main_system.pc'
+[4.233s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/main_system/lib/python3.12/site-packages'
+[4.234s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/main_system/bin'
+[4.234s] INFO:colcon.colcon_core.shell:Creating package script '/home/nawako05/finalproject_ws/install/main_system/share/main_system/package.ps1'
+[4.236s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/nawako05/finalproject_ws/install/main_system/share/main_system/package.dsv'
+[4.237s] INFO:colcon.colcon_core.shell:Creating package script '/home/nawako05/finalproject_ws/install/main_system/share/main_system/package.sh'
+[4.239s] INFO:colcon.colcon_core.shell:Creating package script '/home/nawako05/finalproject_ws/install/main_system/share/main_system/package.bash'
+[4.241s] INFO:colcon.colcon_core.shell:Creating package script '/home/nawako05/finalproject_ws/install/main_system/share/main_system/package.zsh'
+[4.243s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/nawako05/finalproject_ws/install/main_system/share/colcon-core/packages/main_system)
+[4.245s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(main_system)
+[4.245s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/main_system' for CMake module files
+[4.246s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/main_system' for CMake config files
+[4.247s] Level 1:colcon.colcon_core.shell:create_environment_hook('main_system', 'cmake_prefix_path')
+[4.247s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nawako05/finalproject_ws/install/main_system/share/main_system/hook/cmake_prefix_path.ps1'
+[4.249s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nawako05/finalproject_ws/install/main_system/share/main_system/hook/cmake_prefix_path.dsv'
+[4.250s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nawako05/finalproject_ws/install/main_system/share/main_system/hook/cmake_prefix_path.sh'
+[4.251s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/main_system/bin'
+[4.252s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/main_system/lib/pkgconfig/main_system.pc'
+[4.252s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/main_system/lib/python3.12/site-packages'
+[4.253s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/main_system/bin'
+[4.254s] INFO:colcon.colcon_core.shell:Creating package script '/home/nawako05/finalproject_ws/install/main_system/share/main_system/package.ps1'
+[4.255s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/nawako05/finalproject_ws/install/main_system/share/main_system/package.dsv'
+[4.256s] INFO:colcon.colcon_core.shell:Creating package script '/home/nawako05/finalproject_ws/install/main_system/share/main_system/package.sh'
+[4.256s] INFO:colcon.colcon_core.shell:Creating package script '/home/nawako05/finalproject_ws/install/main_system/share/main_system/package.bash'
+[4.257s] INFO:colcon.colcon_core.shell:Creating package script '/home/nawako05/finalproject_ws/install/main_system/share/main_system/package.zsh'
+[4.258s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/nawako05/finalproject_ws/install/main_system/share/colcon-core/packages/main_system)
+[4.260s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/nawako05/finalproject_ws/src/manual_command' with build type 'ament_python'
+[4.260s] Level 1:colcon.colcon_core.shell:create_environment_hook('manual_command', 'ament_prefix_path')
+[4.260s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nawako05/finalproject_ws/install/manual_command/share/manual_command/hook/ament_prefix_path.ps1'
+[4.261s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nawako05/finalproject_ws/install/manual_command/share/manual_command/hook/ament_prefix_path.dsv'
+[4.263s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nawako05/finalproject_ws/install/manual_command/share/manual_command/hook/ament_prefix_path.sh'
+[4.265s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[4.265s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[5.768s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/nawako05/finalproject_ws/src/manual_command'
+[5.769s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[5.769s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[6.728s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/nawako05/finalproject_ws/build/debugger': PYTHONPATH=/home/nawako05/finalproject_ws/build/debugger/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nawako05/finalproject_ws/install/debugger/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nawako05/finalproject_ws/build/debugger/build --no-deps symlink_data
+[7.487s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/nawako05/finalproject_ws/build/main_control': PYTHONPATH=/home/nawako05/finalproject_ws/build/main_control/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nawako05/finalproject_ws/install/main_control/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nawako05/finalproject_ws/build/main_control/build --no-deps symlink_data
+[7.647s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/nawako05/finalproject_ws/build/image_processing': PYTHONPATH=/home/nawako05/finalproject_ws/build/image_processing/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nawako05/finalproject_ws/install/image_processing/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nawako05/finalproject_ws/build/image_processing/build --no-deps symlink_data
+[9.755s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/nawako05/finalproject_ws/build/manual_command': PYTHONPATH=/home/nawako05/finalproject_ws/build/manual_command/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nawako05/finalproject_ws/install/manual_command/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nawako05/finalproject_ws/build/manual_command/build --no-deps symlink_data
+[10.187s] Level 1:colcon.colcon_core.shell:create_environment_hook('debugger', 'pythonpath_develop')
+[10.188s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nawako05/finalproject_ws/build/debugger/share/debugger/hook/pythonpath_develop.ps1'
+[10.190s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/nawako05/finalproject_ws/build/debugger' returned '0': PYTHONPATH=/home/nawako05/finalproject_ws/build/debugger/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nawako05/finalproject_ws/install/debugger/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nawako05/finalproject_ws/build/debugger/build --no-deps symlink_data
+[10.191s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nawako05/finalproject_ws/build/debugger/share/debugger/hook/pythonpath_develop.dsv'
+[10.192s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nawako05/finalproject_ws/build/debugger/share/debugger/hook/pythonpath_develop.sh'
+[10.194s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/debugger' for CMake module files
+[10.195s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/debugger' for CMake config files
+[10.196s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/debugger/lib'
+[10.196s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/debugger/bin'
+[10.196s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/debugger/lib/pkgconfig/debugger.pc'
+[10.197s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/debugger/lib/python3.12/site-packages'
+[10.197s] Level 1:colcon.colcon_core.shell:create_environment_hook('debugger', 'pythonpath')
+[10.200s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nawako05/finalproject_ws/install/debugger/share/debugger/hook/pythonpath.ps1'
+[10.201s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nawako05/finalproject_ws/install/debugger/share/debugger/hook/pythonpath.dsv'
+[10.202s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nawako05/finalproject_ws/install/debugger/share/debugger/hook/pythonpath.sh'
+[10.209s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/debugger/bin'
+[10.209s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(debugger)
+[10.211s] INFO:colcon.colcon_core.shell:Creating package script '/home/nawako05/finalproject_ws/install/debugger/share/debugger/package.ps1'
+[10.219s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/nawako05/finalproject_ws/install/debugger/share/debugger/package.dsv'
+[10.220s] INFO:colcon.colcon_core.shell:Creating package script '/home/nawako05/finalproject_ws/install/debugger/share/debugger/package.sh'
+[10.222s] INFO:colcon.colcon_core.shell:Creating package script '/home/nawako05/finalproject_ws/install/debugger/share/debugger/package.bash'
+[10.225s] INFO:colcon.colcon_core.shell:Creating package script '/home/nawako05/finalproject_ws/install/debugger/share/debugger/package.zsh'
+[10.226s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/nawako05/finalproject_ws/install/debugger/share/colcon-core/packages/debugger)
+[10.227s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/nawako05/finalproject_ws/src/uart' with build type 'ament_python'
+[10.228s] Level 1:colcon.colcon_core.shell:create_environment_hook('uart', 'ament_prefix_path')
+[10.229s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nawako05/finalproject_ws/install/uart/share/uart/hook/ament_prefix_path.ps1'
+[10.231s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nawako05/finalproject_ws/install/uart/share/uart/hook/ament_prefix_path.dsv'
+[10.232s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nawako05/finalproject_ws/install/uart/share/uart/hook/ament_prefix_path.sh'
+[10.233s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[10.234s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[11.794s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/nawako05/finalproject_ws/src/uart'
+[11.795s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[11.795s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[11.842s] Level 1:colcon.colcon_core.shell:create_environment_hook('main_control', 'pythonpath_develop')
+[11.843s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nawako05/finalproject_ws/build/main_control/share/main_control/hook/pythonpath_develop.ps1'
+[11.843s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/nawako05/finalproject_ws/build/main_control' returned '0': PYTHONPATH=/home/nawako05/finalproject_ws/build/main_control/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nawako05/finalproject_ws/install/main_control/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nawako05/finalproject_ws/build/main_control/build --no-deps symlink_data
+[11.844s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nawako05/finalproject_ws/build/main_control/share/main_control/hook/pythonpath_develop.dsv'
+[11.845s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nawako05/finalproject_ws/build/main_control/share/main_control/hook/pythonpath_develop.sh'
+[11.846s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/main_control' for CMake module files
+[11.846s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/main_control' for CMake config files
+[11.847s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/main_control/lib'
+[11.847s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/main_control/bin'
+[11.847s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/main_control/lib/pkgconfig/main_control.pc'
+[11.848s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/main_control/lib/python3.12/site-packages'
+[11.848s] Level 1:colcon.colcon_core.shell:create_environment_hook('main_control', 'pythonpath')
+[11.848s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nawako05/finalproject_ws/install/main_control/share/main_control/hook/pythonpath.ps1'
+[11.849s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nawako05/finalproject_ws/install/main_control/share/main_control/hook/pythonpath.dsv'
+[11.850s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nawako05/finalproject_ws/install/main_control/share/main_control/hook/pythonpath.sh'
+[11.851s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/main_control/bin'
+[11.851s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(main_control)
+[11.852s] INFO:colcon.colcon_core.shell:Creating package script '/home/nawako05/finalproject_ws/install/main_control/share/main_control/package.ps1'
+[11.853s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/nawako05/finalproject_ws/install/main_control/share/main_control/package.dsv'
+[11.854s] INFO:colcon.colcon_core.shell:Creating package script '/home/nawako05/finalproject_ws/install/main_control/share/main_control/package.sh'
+[11.857s] INFO:colcon.colcon_core.shell:Creating package script '/home/nawako05/finalproject_ws/install/main_control/share/main_control/package.bash'
+[11.857s] INFO:colcon.colcon_core.shell:Creating package script '/home/nawako05/finalproject_ws/install/main_control/share/main_control/package.zsh'
+[11.858s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/nawako05/finalproject_ws/install/main_control/share/colcon-core/packages/main_control)
+[11.859s] Level 1:colcon.colcon_core.shell:create_environment_hook('image_processing', 'pythonpath_develop')
+[11.860s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nawako05/finalproject_ws/build/image_processing/share/image_processing/hook/pythonpath_develop.ps1'
+[11.865s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nawako05/finalproject_ws/build/image_processing/share/image_processing/hook/pythonpath_develop.dsv'
+[11.866s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nawako05/finalproject_ws/build/image_processing/share/image_processing/hook/pythonpath_develop.sh'
+[11.865s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/nawako05/finalproject_ws/build/image_processing' returned '0': PYTHONPATH=/home/nawako05/finalproject_ws/build/image_processing/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nawako05/finalproject_ws/install/image_processing/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nawako05/finalproject_ws/build/image_processing/build --no-deps symlink_data
+[11.867s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/image_processing' for CMake module files
+[11.868s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/image_processing' for CMake config files
+[11.868s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/image_processing/lib'
+[11.869s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/image_processing/bin'
+[11.869s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/image_processing/lib/pkgconfig/image_processing.pc'
+[11.869s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/image_processing/lib/python3.12/site-packages'
+[11.869s] Level 1:colcon.colcon_core.shell:create_environment_hook('image_processing', 'pythonpath')
+[11.870s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nawako05/finalproject_ws/install/image_processing/share/image_processing/hook/pythonpath.ps1'
+[11.871s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nawako05/finalproject_ws/install/image_processing/share/image_processing/hook/pythonpath.dsv'
+[11.871s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nawako05/finalproject_ws/install/image_processing/share/image_processing/hook/pythonpath.sh'
+[11.873s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/image_processing/bin'
+[11.873s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(image_processing)
+[11.873s] INFO:colcon.colcon_core.shell:Creating package script '/home/nawako05/finalproject_ws/install/image_processing/share/image_processing/package.ps1'
+[11.874s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/nawako05/finalproject_ws/install/image_processing/share/image_processing/package.dsv'
+[11.875s] INFO:colcon.colcon_core.shell:Creating package script '/home/nawako05/finalproject_ws/install/image_processing/share/image_processing/package.sh'
+[11.876s] INFO:colcon.colcon_core.shell:Creating package script '/home/nawako05/finalproject_ws/install/image_processing/share/image_processing/package.bash'
+[11.877s] INFO:colcon.colcon_core.shell:Creating package script '/home/nawako05/finalproject_ws/install/image_processing/share/image_processing/package.zsh'
+[11.878s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/nawako05/finalproject_ws/install/image_processing/share/colcon-core/packages/image_processing)
+[13.083s] Level 1:colcon.colcon_core.shell:create_environment_hook('manual_command', 'pythonpath_develop')
+[13.084s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nawako05/finalproject_ws/build/manual_command/share/manual_command/hook/pythonpath_develop.ps1'
+[13.085s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nawako05/finalproject_ws/build/manual_command/share/manual_command/hook/pythonpath_develop.dsv'
+[13.085s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/nawako05/finalproject_ws/build/manual_command' returned '0': PYTHONPATH=/home/nawako05/finalproject_ws/build/manual_command/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nawako05/finalproject_ws/install/manual_command/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nawako05/finalproject_ws/build/manual_command/build --no-deps symlink_data
+[13.086s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nawako05/finalproject_ws/build/manual_command/share/manual_command/hook/pythonpath_develop.sh'
+[13.087s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/manual_command' for CMake module files
+[13.087s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/manual_command' for CMake config files
+[13.088s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/manual_command/lib'
+[13.088s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/manual_command/bin'
+[13.088s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/manual_command/lib/pkgconfig/manual_command.pc'
+[13.089s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/manual_command/lib/python3.12/site-packages'
+[13.089s] Level 1:colcon.colcon_core.shell:create_environment_hook('manual_command', 'pythonpath')
+[13.089s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nawako05/finalproject_ws/install/manual_command/share/manual_command/hook/pythonpath.ps1'
+[13.090s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nawako05/finalproject_ws/install/manual_command/share/manual_command/hook/pythonpath.dsv'
+[13.093s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nawako05/finalproject_ws/install/manual_command/share/manual_command/hook/pythonpath.sh'
+[13.094s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/manual_command/bin'
+[13.094s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(manual_command)
+[13.095s] INFO:colcon.colcon_core.shell:Creating package script '/home/nawako05/finalproject_ws/install/manual_command/share/manual_command/package.ps1'
+[13.096s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/nawako05/finalproject_ws/install/manual_command/share/manual_command/package.dsv'
+[13.096s] INFO:colcon.colcon_core.shell:Creating package script '/home/nawako05/finalproject_ws/install/manual_command/share/manual_command/package.sh'
+[13.097s] INFO:colcon.colcon_core.shell:Creating package script '/home/nawako05/finalproject_ws/install/manual_command/share/manual_command/package.bash'
+[13.098s] INFO:colcon.colcon_core.shell:Creating package script '/home/nawako05/finalproject_ws/install/manual_command/share/manual_command/package.zsh'
+[13.099s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/nawako05/finalproject_ws/install/manual_command/share/colcon-core/packages/manual_command)
+[14.102s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/nawako05/finalproject_ws/build/uart': PYTHONPATH=/home/nawako05/finalproject_ws/build/uart/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nawako05/finalproject_ws/install/uart/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nawako05/finalproject_ws/build/uart/build --no-deps symlink_data
+[16.357s] Level 1:colcon.colcon_core.shell:create_environment_hook('uart', 'pythonpath_develop')
+[16.358s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nawako05/finalproject_ws/build/uart/share/uart/hook/pythonpath_develop.ps1'
+[16.358s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/nawako05/finalproject_ws/build/uart' returned '0': PYTHONPATH=/home/nawako05/finalproject_ws/build/uart/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nawako05/finalproject_ws/install/uart/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nawako05/finalproject_ws/build/uart/build --no-deps symlink_data
+[16.359s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nawako05/finalproject_ws/build/uart/share/uart/hook/pythonpath_develop.dsv'
+[16.360s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nawako05/finalproject_ws/build/uart/share/uart/hook/pythonpath_develop.sh'
+[16.361s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/uart' for CMake module files
+[16.361s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/uart' for CMake config files
+[16.363s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/uart/lib'
+[16.363s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/uart/bin'
+[16.363s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/uart/lib/pkgconfig/uart.pc'
+[16.364s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/uart/lib/python3.12/site-packages'
+[16.364s] Level 1:colcon.colcon_core.shell:create_environment_hook('uart', 'pythonpath')
+[16.364s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nawako05/finalproject_ws/install/uart/share/uart/hook/pythonpath.ps1'
+[16.365s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nawako05/finalproject_ws/install/uart/share/uart/hook/pythonpath.dsv'
+[16.366s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nawako05/finalproject_ws/install/uart/share/uart/hook/pythonpath.sh'
+[16.367s] Level 1:colcon.colcon_core.environment:checking '/home/nawako05/finalproject_ws/install/uart/bin'
+[16.367s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(uart)
+[16.368s] INFO:colcon.colcon_core.shell:Creating package script '/home/nawako05/finalproject_ws/install/uart/share/uart/package.ps1'
+[16.369s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/nawako05/finalproject_ws/install/uart/share/uart/package.dsv'
+[16.369s] INFO:colcon.colcon_core.shell:Creating package script '/home/nawako05/finalproject_ws/install/uart/share/uart/package.sh'
+[16.372s] INFO:colcon.colcon_core.shell:Creating package script '/home/nawako05/finalproject_ws/install/uart/share/uart/package.bash'
+[16.373s] INFO:colcon.colcon_core.shell:Creating package script '/home/nawako05/finalproject_ws/install/uart/share/uart/package.zsh'
+[16.373s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/nawako05/finalproject_ws/install/uart/share/colcon-core/packages/uart)
+[16.375s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[16.375s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[16.375s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[16.376s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[16.398s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.notify_send': Could not find 'notify-send'
+[16.398s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[16.398s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[16.398s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[16.399s] DEBUG:colcon.colcon_notification.desktop_notification.notify2:Failed to initialize notify2: org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.Notifications was not provided by any .service files
+[16.400s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[16.400s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/nawako05/finalproject_ws/install/local_setup.ps1'
+[16.401s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/nawako05/finalproject_ws/install/_local_setup_util_ps1.py'
+[16.403s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/nawako05/finalproject_ws/install/setup.ps1'
+[16.426s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/nawako05/finalproject_ws/install/local_setup.sh'
+[16.427s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/nawako05/finalproject_ws/install/_local_setup_util_sh.py'
+[16.427s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/nawako05/finalproject_ws/install/setup.sh'
+[16.447s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/nawako05/finalproject_ws/install/local_setup.bash'
+[16.448s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/nawako05/finalproject_ws/install/setup.bash'
+[16.468s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/nawako05/finalproject_ws/install/local_setup.zsh'
+[16.468s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/nawako05/finalproject_ws/install/setup.zsh'

@@ -1,0 +1,1 @@
+/home/nawako05/finalproject_ws/build/main_system/ament_cmake_core/main_systemConfig.cmake

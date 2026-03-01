@@ -1,0 +1,16 @@
+running develop
+running egg_info
+writing image_processing.egg-info/PKG-INFO
+writing dependency_links to image_processing.egg-info/dependency_links.txt
+writing entry points to image_processing.egg-info/entry_points.txt
+writing requirements to image_processing.egg-info/requires.txt
+writing top-level names to image_processing.egg-info/top_level.txt
+reading manifest file 'image_processing.egg-info/SOURCES.txt'
+writing manifest file 'image_processing.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/nawako05/finalproject_ws/install/image_processing/lib/python3.12/site-packages/image-processing.egg-link (link to .)
+Installing arm_detect script to /home/nawako05/finalproject_ws/install/image_processing/lib/image_processing
+Installing record script to /home/nawako05/finalproject_ws/install/image_processing/lib/image_processing
+
+Installed /home/nawako05/finalproject_ws/build/image_processing
+running symlink_data

@@ -1,0 +1,13 @@
+package.xml
+setup.cfg
+setup.py
+debugger/__init__.py
+debugger/pid_debug.py
+debugger.egg-info/PKG-INFO
+debugger.egg-info/SOURCES.txt
+debugger.egg-info/dependency_links.txt
+debugger.egg-info/entry_points.txt
+debugger.egg-info/requires.txt
+debugger.egg-info/top_level.txt
+debugger.egg-info/zip-safe
+resource/debugger

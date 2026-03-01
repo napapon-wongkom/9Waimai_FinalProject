@@ -1,0 +1,22 @@
+running develop
+/usr/lib/python3/dist-packages/setuptools/command/easy_install.py:363: UserWarning: Unbuilt egg for pytest-repeat [unknown version] (/usr/lib/python3/dist-packages)
+  self.local_index = Environment(self.shadow_path + sys.path)
+running egg_info
+writing main_control.egg-info/PKG-INFO
+writing dependency_links to main_control.egg-info/dependency_links.txt
+writing entry points to main_control.egg-info/entry_points.txt
+writing requirements to main_control.egg-info/requires.txt
+writing top-level names to main_control.egg-info/top_level.txt
+reading manifest file 'main_control.egg-info/SOURCES.txt'
+writing manifest file 'main_control.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/nawako05/finalproject_ws/install/main_control/lib/python3.12/site-packages/main-control.egg-link (link to .)
+Installing compensator script to /home/nawako05/finalproject_ws/install/main_control/lib/main_control
+Installing floor_manager script to /home/nawako05/finalproject_ws/install/main_control/lib/main_control
+Installing hardware_bridge script to /home/nawako05/finalproject_ws/install/main_control/lib/main_control
+Installing lidar_filter script to /home/nawako05/finalproject_ws/install/main_control/lib/main_control
+Installing sequence script to /home/nawako05/finalproject_ws/install/main_control/lib/main_control
+Installing setpose script to /home/nawako05/finalproject_ws/install/main_control/lib/main_control
+
+Installed /home/nawako05/finalproject_ws/build/main_control
+running symlink_data

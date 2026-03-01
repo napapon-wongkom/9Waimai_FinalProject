@@ -1,0 +1,4 @@
+[console_scripts]
+arm_detect = image_processing.arm_image_processing:main
+record = image_processing.video_record:main
+robot_detect = image_processing.robot_detect:main

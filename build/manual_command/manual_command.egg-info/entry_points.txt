@@ -1,0 +1,2 @@
+[console_scripts]
+move_forward = manual_command.movefoward:main

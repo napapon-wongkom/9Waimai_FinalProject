@@ -1,0 +1,21 @@
+[6.583s] Invoking command in '/home/nawako05/finalproject_ws/build/image_processing': PYTHONPATH=/home/nawako05/finalproject_ws/build/image_processing/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nawako05/finalproject_ws/install/image_processing/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nawako05/finalproject_ws/build/image_processing/build --no-deps symlink_data
+[8.430s] running develop
+[9.264s] /usr/lib/python3/dist-packages/setuptools/command/easy_install.py:363: UserWarning: Unbuilt egg for pytest-repeat [unknown version] (/usr/lib/python3/dist-packages)
+[9.264s]   self.local_index = Environment(self.shadow_path + sys.path)
+[9.426s] running egg_info
+[9.623s] writing image_processing.egg-info/PKG-INFO
+[9.625s] writing dependency_links to image_processing.egg-info/dependency_links.txt
+[9.627s] writing entry points to image_processing.egg-info/entry_points.txt
+[9.629s] writing requirements to image_processing.egg-info/requires.txt
+[9.630s] writing top-level names to image_processing.egg-info/top_level.txt
+[9.833s] reading manifest file 'image_processing.egg-info/SOURCES.txt'
+[9.836s] writing manifest file 'image_processing.egg-info/SOURCES.txt'
+[9.964s] running build_ext
+[9.967s] Creating /home/nawako05/finalproject_ws/install/image_processing/lib/python3.12/site-packages/image-processing.egg-link (link to .)
+[9.970s] Installing arm_detect script to /home/nawako05/finalproject_ws/install/image_processing/lib/image_processing
+[9.972s] Installing record script to /home/nawako05/finalproject_ws/install/image_processing/lib/image_processing
+[9.974s] Installing robot_detect script to /home/nawako05/finalproject_ws/install/image_processing/lib/image_processing
+[9.975s] 
+[9.975s] Installed /home/nawako05/finalproject_ws/build/image_processing
+[9.977s] running symlink_data
+[10.285s] Invoked command in '/home/nawako05/finalproject_ws/build/image_processing' returned '0': PYTHONPATH=/home/nawako05/finalproject_ws/build/image_processing/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nawako05/finalproject_ws/install/image_processing/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nawako05/finalproject_ws/build/image_processing/build --no-deps symlink_data

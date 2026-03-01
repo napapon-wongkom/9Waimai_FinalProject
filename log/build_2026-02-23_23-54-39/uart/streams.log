@@ -1,0 +1,20 @@
+[3.872s] Invoking command in '/home/nawako05/finalproject_ws/build/uart': PYTHONPATH=/home/nawako05/finalproject_ws/build/uart/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nawako05/finalproject_ws/install/uart/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nawako05/finalproject_ws/build/uart/build --no-deps symlink_data
+[5.043s] running develop
+[5.554s] /usr/lib/python3/dist-packages/setuptools/command/easy_install.py:363: UserWarning: Unbuilt egg for pytest-repeat [unknown version] (/usr/lib/python3/dist-packages)
+[5.555s]   self.local_index = Environment(self.shadow_path + sys.path)
+[5.654s] running egg_info
+[5.786s] writing uart.egg-info/PKG-INFO
+[5.787s] writing dependency_links to uart.egg-info/dependency_links.txt
+[5.788s] writing entry points to uart.egg-info/entry_points.txt
+[5.788s] writing requirements to uart.egg-info/requires.txt
+[5.789s] writing top-level names to uart.egg-info/top_level.txt
+[5.910s] reading manifest file 'uart.egg-info/SOURCES.txt'
+[5.911s] writing manifest file 'uart.egg-info/SOURCES.txt'
+[5.979s] running build_ext
+[5.979s] Creating /home/nawako05/finalproject_ws/install/uart/lib/python3.12/site-packages/uart.egg-link (link to .)
+[5.980s] Installing data_process script to /home/nawako05/finalproject_ws/install/uart/lib/uart
+[5.981s] Installing uart_node script to /home/nawako05/finalproject_ws/install/uart/lib/uart
+[5.982s] 
+[5.984s] Installed /home/nawako05/finalproject_ws/build/uart
+[5.987s] running symlink_data
+[6.128s] Invoked command in '/home/nawako05/finalproject_ws/build/uart' returned '0': PYTHONPATH=/home/nawako05/finalproject_ws/build/uart/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nawako05/finalproject_ws/install/uart/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nawako05/finalproject_ws/build/uart/build --no-deps symlink_data

@@ -1,0 +1,65 @@
+-- Found ament_cmake: 2.5.4 (/home/nawako05/ros2_jazzy/install/ament_cmake/share/ament_cmake/cmake)
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Found ament_lint_auto: 0.17.3 (/home/nawako05/ros2_jazzy/install/ament_lint_auto/share/ament_lint_auto/cmake)
+-- Added test 'copyright' to check source files copyright and LICENSE
+-- Added test 'flake8' to check Python code syntax and style conventions
+-- Configured 'flake8' exclude dirs and/or files: 
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done (1.8s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/nawako05/finalproject_ws/build/main_system
+-- Install configuration: ""
+-- Execute custom install script
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/config/empty.yaml
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/config/mapper_params_online_async.yaml
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/config/nav2_params.yaml
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/description/camera.xacro
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/description/lidar.xacro
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/description/robot.urdf.xacro
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/description/robot_core.xacro
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/launch/localization_launch.py
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/launch/master_nav_launch.py
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/launch/navigation_launch.py
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/launch/rsp.launch.py
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/launch/system.launch.py
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/mesh/2_inch_daster_wheel.dae
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/mesh/Elevator_body.stl
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/mesh/Lidar_base.stl
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/mesh/Robot_Chassis.stl
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/mesh/Robot_Model_edit.stl
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/mesh/Wheels_8_inches.stl
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/mesh/caster_base.stl
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/worlds/empty.world
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/maps/floor_1.data
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/maps/floor_1.pgm
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/maps/floor_1.posegraph
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/maps/floor_1.yaml
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/maps/floor_2.data
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/maps/floor_2.pgm
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/maps/floor_2.posegraph
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/maps/floor_2.yaml
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/maps/floor_3.data
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/maps/floor_3.pgm
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/maps/floor_3.posegraph
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/maps/floor_3.yaml
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/maps/test2_save.pgm
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/maps/test2_save.yaml
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/maps/test2_serial.data
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/maps/test2_serial.posegraph
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/ament_index/resource_index/package_run_dependencies/main_system
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/ament_index/resource_index/parent_prefix_path/main_system
+-- Up-to-date symlink: /home/nawako05/finalproject_ws/install/main_system/share/main_system/environment/ament_prefix_path.sh
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/environment/ament_prefix_path.dsv
+-- Up-to-date symlink: /home/nawako05/finalproject_ws/install/main_system/share/main_system/environment/path.sh
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/environment/path.dsv
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/local_setup.bash
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/local_setup.sh
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/local_setup.zsh
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/local_setup.dsv
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/package.dsv
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/ament_index/resource_index/packages/main_system
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/cmake/main_systemConfig.cmake
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/cmake/main_systemConfig-version.cmake
+-- Symlinking: /home/nawako05/finalproject_ws/install/main_system/share/main_system/package.xml

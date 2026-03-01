@@ -1,0 +1,27 @@
+[10.694s] Invoking command in '/home/nawako05/finalproject_ws/build/main_control': PYTHONPATH=/home/nawako05/finalproject_ws/build/main_control/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nawako05/finalproject_ws/install/main_control/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nawako05/finalproject_ws/build/main_control/build --no-deps symlink_data
+[13.584s] running develop
+[15.111s] /usr/lib/python3/dist-packages/setuptools/command/easy_install.py:363: UserWarning: Unbuilt egg for pytest-repeat [unknown version] (/usr/lib/python3/dist-packages)
+[15.113s]   self.local_index = Environment(self.shadow_path + sys.path)
+[15.487s] running egg_info
+[15.863s] writing main_control.egg-info/PKG-INFO
+[15.870s] writing dependency_links to main_control.egg-info/dependency_links.txt
+[15.870s] writing entry points to main_control.egg-info/entry_points.txt
+[15.871s] writing requirements to main_control.egg-info/requires.txt
+[15.877s] writing top-level names to main_control.egg-info/top_level.txt
+[16.327s] reading manifest file 'main_control.egg-info/SOURCES.txt'
+[16.332s] writing manifest file 'main_control.egg-info/SOURCES.txt'
+[16.679s] running build_ext
+[16.680s] Creating /home/nawako05/finalproject_ws/install/main_control/lib/python3.12/site-packages/main-control.egg-link (link to .)
+[16.686s] Installing command_input script to /home/nawako05/finalproject_ws/install/main_control/lib/main_control
+[16.693s] Installing compensator script to /home/nawako05/finalproject_ws/install/main_control/lib/main_control
+[16.693s] Installing floor_manager script to /home/nawako05/finalproject_ws/install/main_control/lib/main_control
+[16.693s] Installing hardware_bridge script to /home/nawako05/finalproject_ws/install/main_control/lib/main_control
+[16.697s] Installing lidar_filter script to /home/nawako05/finalproject_ws/install/main_control/lib/main_control
+[16.697s] Installing sequence script to /home/nawako05/finalproject_ws/install/main_control/lib/main_control
+[16.697s] Installing setpose script to /home/nawako05/finalproject_ws/install/main_control/lib/main_control
+[16.702s] Installing state_machine script to /home/nawako05/finalproject_ws/install/main_control/lib/main_control
+[16.703s] Installing waypoint_manage script to /home/nawako05/finalproject_ws/install/main_control/lib/main_control
+[16.703s] 
+[16.712s] Installed /home/nawako05/finalproject_ws/build/main_control
+[16.712s] running symlink_data
+[18.602s] Invoked command in '/home/nawako05/finalproject_ws/build/main_control' returned '0': PYTHONPATH=/home/nawako05/finalproject_ws/build/main_control/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nawako05/finalproject_ws/install/main_control/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nawako05/finalproject_ws/build/main_control/build --no-deps symlink_data
